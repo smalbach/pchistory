@@ -5,7 +5,7 @@
 
 <h3>Lista de Equipos</h3>
 
-
+<h4>Total: <span><strong>{{ $pcs->getTotal() }}</span></strong> </h4>
 <table  class="table  table-striped " >
 
     <tr class="info">
@@ -26,9 +26,12 @@
         <td>{{  $pc->owner  }}</td>
         <td>{{  $pc->internal_id  }}</td>
         <td>
+            @if(Auth::user()->type=='company')
+
             <a  class="btn btn-success btn-xs" href="{{  route('pc_detail', array('id' => $pc->id)) }}" >
                 Administrar
             </a>
+            @endif
 
         </td>
         <td>

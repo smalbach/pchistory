@@ -275,7 +275,8 @@ $(document).ready(function(){
             type: 'POST',
             data: formData,
             dataType:'json',
-            async:false,
+
+
 
             success: function(data){
 
