@@ -117,8 +117,9 @@ return array(
         'description'=>'Descripcion',
         'value'=>'Cantidad',
         'accesory_name'=>'Nombre de dispositivo',
-        'support'=>'Empresa de soporte',
+        'technical'=>'Empresa de soporte',
         'support_name'=>'Empresa de soporte',
+        'full_name'=>'Nombres'
 
 
 	),

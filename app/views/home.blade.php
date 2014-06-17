@@ -6,57 +6,46 @@
 @section('content')
 
 <p class="description bg-grayLighter padding200">
-    <h1>Hire me</h1>
-    <h2>Aplicacion clase de mejorandola</h2>
-
-    <a  class="button success" href="{{ route('sign_up') }}">postulate</a>
-
+    <h1>Pc History</h1>
+    <h2>Tu computador al detalle</h2>
 </p>
 
+<div class="well bs-component col-xs-6">
 
-<h1 >Ultimos Candidatos</h1>
+@if(Auth::check())
+m wiiii
+@else
 
-   
+    {{ Form::open(['route'=>'login','class'=>'form-horizontal','role'=>'form']) }}
 
-    @foreach ($latest_candidates as $category) 
-        <h2 > {{  $category->title }} </h2>
-         <table class="table">
-            <tr class="bg-cyan">
-                    <th>Nombre</th>
-                    <th>Tipo de Trabajo</th>
-                    <th>Descripción</th>
-                    <th>   </th>
+        <fieldset>
+            <legend>Inicia sesión</legend>
 
 
-            </tr>
+            {{ Field::email('email',null,['class'=>'form-control']) }}
+            {{ Field::password('password',['class'=>'form-control']) }}
 
-            @foreach ($category->candidates as $candidates)
-                <tr>
-                    <td>{{ $candidates->user->full_name }} </td>
-                    <td>{{ $candidates->job_type_title }} </td>
-                    <td>{{ $candidates->description }} </td>
-                     <td>
-                        <a href="{{ route('candidate', [$candidates->slug,$candidates->id]) }}" class="button info">Ver</a>
+            @if(Session::has('login_error'))
+            <div class="form-group has-error ">
+                <label class="control-label col-lg-offset-3" for="inputError">Error de usuario o contraseña</label>
+
+            </div>
+
+            @endif
+            <div class="form-group">
+                <div class="col-lg-10 col-lg-offset-3">
+
+                    <button type="submit" class="btn btn-primary">Iniciar</button>
+                </div>
+            </div>
+        </fieldset>
+
+    {{ Form::close() }}
+@endif
 
 
-                    </td>
+</div>
 
-                </tr>
-
-
-
-
-            @endforeach
-
-   
-
-    </table>
-        <p>
-            <a href="{{  route('category', [$category->title,$category->id]) }}" class="button info">Ver categoria</a>
-
-        </p>
-
-     @endforeach
 @stop
 
 

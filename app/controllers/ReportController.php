@@ -2,6 +2,7 @@
 use PcHistory\Repositories\ReportRepo;
 use PcHistory\Managers\ReportManager;
 use PcHistory\Repositories\MaintenenceRepo;
+use PcHistory\Managers\MaintenanceManaguer;
 
 class ReportController extends BaseController {
 
@@ -25,18 +26,21 @@ class ReportController extends BaseController {
 
 
         $manager = new ReportManager($repo, Input::all());
+        $id=Input::get('maintenance_id');
+        $maintenance = $this->maintenenceRepo->find($id);
+        $maintenance->state=Input::get('state');
+
 
 
         if($manager->save()){
-           $this->maintenenceRepo->updtae_order_state(
-                                                    Input::get('maintenance_id'),
-                                                    Input::get('state'));
-           Return Redirect::route('list_order');
+            if($maintenance->save()){
+                Return Redirect::route('technical_list');
+            }
 
         }
 
 
-        //return Redirect::back()->withInput()->withErrors($manager->getErrors());
+        return Redirect::back()->withInput()->withErrors($manager->getErrors());
 
 
     }

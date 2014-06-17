@@ -3,14 +3,24 @@
 use PcHistory\Entities\User;
 use PcHistory\Repositories\CandidateRepo;
 use PcHistory\Managers\RegisterManager;
-use PcHistory\Components\FieldBuilder;
+use PcHistory\Managers\UserCompanyManager as uscomManager;
+use PcHistory\Repositories\UserRepo;
+use PcHistory\Repositories\user_companysRepo;
+use PcHistory\Managers\UserManager;
 
 class UserController extends BaseController {
 
-        protected  $candidateRepo;
+    protected  $candidateRepo;
+    protected  $userRepo;
+    protected  $usercomRepo;
 
-    public function __construct(CandidateRepo $candidateRepo){
+    public function __construct(CandidateRepo $candidateRepo,
+                                UserRepo $userRepo,
+                                user_companysRepo $usercomRepo
+                                ){
         $this->candidateRepo=$candidateRepo;
+        $this->userRepo=$userRepo;
+        $this->usercomRepo=$usercomRepo;
 
     }
 
@@ -26,6 +36,8 @@ class UserController extends BaseController {
         $manager = new RegisterManager($user, Input::all());
 
 
+
+
 		if($manager->save()){
 			return Redirect::route('home');
 		}
@@ -34,5 +46,65 @@ class UserController extends BaseController {
 	}
 
 
-	
+    public function user_show(){
+        $state=Input::get('state');
+        $full_name=Input::get('full_name');
+
+
+        $company=Session::get('company');
+
+        $users= $this->userRepo->search_users_company($company->id,$full_name,$state);
+
+        return View::make('users/admin_users', compact('company','users','state','full_name') );
+
+    }
+
+    public function save_user_company(){
+
+        $company=Session::get('company');
+
+
+        $user = $this->userRepo->newUser();
+        $user->state='active';
+        $manager = new UserManager($user, Input::all());
+
+        $id=$manager->lastId();
+
+        if($manager->save()){
+            $id=$manager->lastId();
+
+
+            $user_company = $this->usercomRepo->newUserCompany();
+
+            $data=[
+                'user_id'		=>$id,
+                'company_id'    =>$company->id,
+                'state'			=>'active'
+            ];
+
+            $managerComapny = new uscomManager($user_company,$data);
+
+
+
+            if($managerComapny->save()){
+                return 3;
+
+            }else{
+                return 2;
+            }
+
+
+        }else{
+            return 1;
+        }
+
+        //return Redirect::back()->withInput()->withErrors($manager->getErrors());
+
+
+
+    }
+
+
+
+
 }

@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration {
 			$table->string("full_name");
 			$table->string("email");
 			$table->string("password");
-			$table->enum("type",['admin', 'company','user_compnay','technical']);
+			$table->enum("type",['admin', 'company','user_company','technical']);
             $table->string("avatar");
             $table->string("state");
             $table->string("remember_token")->nullable();

@@ -1,7 +1,10 @@
 @extends('companies/layout')
 
 
+
 @section('content')
+
+
 
 <h3>Ordenes de mantenimiento</h3>
 
@@ -11,9 +14,9 @@
         <label for="">Mostrar</label>
     </div>
     <div class="col-lg-6">
-        <select name="state" id="state">
+        <select name="state" id="state" >
             <option value="waiting">En espera</option>
-            <option value="processing">En espera</option>
+            <option value="processing">En proceso</option>
             <option value="fix">Arreglados</option>
             <option value="_">Todos</option>
 
@@ -34,12 +37,14 @@
         <th>Prioridad</th>
         <th>Observación</th>
 
-        <th colspan="1"></th>
+
         @if($state=="fix" || $state=="_" )
+        <th colspan="1"></th>
         <th>Hallazgos</th>
         <th>Reporte Tecnico</th>
         <th>Recomendaciones</th>
-
+        @else
+        <th colspan="4"></th>
 
         @endif
 
@@ -58,7 +63,7 @@
         <td>{{  $order->name  }}</td>
         <td>{{  $order->location  }}</td>
         <td>{{  $order->owner  }}</td>
-        <td>{{  $order->support  }}</td>
+        <td>{{  $order->technical  }}</td>
         <td>{{  $order->issues  }}</td>
         <td>
 
@@ -81,6 +86,8 @@
 
 
         <td>
+            @if(Auth::user()->type=='technical')
+
             {{  Form::open(['route'=>'do_order','method'=>'post','role'=>'form','id'=>'frm_accesory_delete'   ]) }}
 
             {{ Field::hidden('order_id',$order->m_id,['class'=>'form-control','id'=>'order_id']) }}
@@ -101,7 +108,7 @@
 
 
             {{Form::close()}}
-
+            @endif
 
         </td>
 
@@ -110,7 +117,8 @@
             <td> {{  $order->tecnical_report  }}</td>
             <td> {{  $order->recommendations  }}</td>
 
-
+        @else
+         <td colspan="3"></td>
 
         @endif
 
@@ -124,11 +132,23 @@
 
 </table>
 <div class="pagination">
-    {{ $orders->links() }}
+
+
+    {{ $orders->appends(array('state' => $state))->links() }}
 </div>
 
 
 
+<script>
+    $("#state").change(function(){
+        var estado=$("#state").val();
+        window.location="{{ route('list_order') }}"+'?page={{$orders->getCurrentPage()}}&state='+estado;
+    })
+
+    $("#state").val('{{$state}}')
+
+
+</script>
 
 @stop
 

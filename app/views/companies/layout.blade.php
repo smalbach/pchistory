@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
 <head>
     <link rel="stylesheet" href="{{ asset('yeti/css/bootstrap.css') }}">
@@ -6,7 +5,8 @@
     <link rel="stylesheet" href="{{ asset('yeti/css/ui/jquery-ui.css') }}">
 
 
-    <script src="{{ asset('yeti/js/jquery/jquery-1.11.1.min.js') }}"></script>
+    <script src="{{ asset('yeti/js/jquery/jquery.min.js') }}"></script>
+
     <script src="{{ asset('yeti/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('yeti/js/ui/jquery-ui-1.10.4.js') }}"></script>
     <script src="{{ asset('yeti/js/jquery.validate.min.js') }}"></script>
@@ -17,11 +17,26 @@
         table tr{
             cursor: pointer;
         }
+        #loader_gif
+        {
+            background:transparent url('{{ asset('img/system/ajax-loader.gif') }}') no-repeat center center;
+            height: 100px;
+            width: 100px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 50%;
+            margin: -25px 0 0 -25px;
+            transition: all 1s ease;
+        }
+
 
     </style>
 
 </head>
-<body class="metro">
+
+<body>
+<div id="loader_gif" style="display: none" ></div>
 
 <div class="navbar navbar-inverse">
     <div class="navbar-header">
@@ -35,15 +50,22 @@
     <div class="navbar-collapse collapse navbar-inverse-collapse">
         <ul class="nav navbar-nav">
 
+
+
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Equipos <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li><a href="{{ route('pc_list') }}">Listado</a></li>
-                    <li><a href="{{ route('pc_add') }}">Nuevo</a></li>
-                    <li><a href="{{ route('pc_hist') }}">Historial</a></li>
+                    @if(Auth::user()->type=='company')
+                        <li><a href="{{ route('pc_add') }}">Nuevo</a></li>
+                        <li><a href="{{ route('pc_hist') }}">Historial</a></li>
+                    @endif
                 </ul>
             </li>
-            <li><a href="{{ route('list_order') }}">Ordenes</a></li>
+            @if(Auth::user()->type=='company')
+                <li><a href="{{ route('list_order') }}">Ordenes</a></li>
+                <li><a href="{{ route('user_list') }}">Usuarios</a></li>
+            @endif
         </ul>
 
 
@@ -51,15 +73,12 @@
 
 
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
+            <li><a href="#">{{ Auth::user()->full_name}}</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"> {{$company->name}} <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
+                    <li><a href="{{ route('signout') }}">Cerrar Sesión</a></li>
+
                 </ul>
             </li>
         </ul>
@@ -239,7 +258,53 @@
     }
 
 
+    function set_loader(div){
+        $("#"+div).empty();
+
+     }
+
+    function show_frm(show,hide){
+        $("#"+hide).effect("clip",100,function(){
+            $("#"+show).css("display","block")
+            $("#"+show).effect("slide",100)
+        })
+    }
+
+    function hide_frm(show,hide){
+        $("#"+hide).effect("clip",100,function(){
+            $("#"+show).effect("slide",100)
+        })
+    }
+
+    $(document).ajaxStart(function(){
+        $('#loader_gif').show()
+
+    })
+    $(document).ajaxStop(function(){
+
+        $('#loader_gif').hide();
+    });
+
+
+
+    $.ajaxSetup ({
+        cache: false
+    });
+</script>
+
+
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-48605959-1', 'aikon.co');
+    ga('send', 'pageview');
 
 </script>
+
 </body>
 </html>
