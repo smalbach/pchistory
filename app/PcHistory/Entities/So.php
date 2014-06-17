@@ -3,7 +3,12 @@
 
 
 class So   extends \Eloquent {
-    protected $fillable = [];
+    protected $fillable =  array(
+
+        'name',
+        'version',
+
+    );
 
 
 

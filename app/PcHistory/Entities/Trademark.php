@@ -10,7 +10,12 @@ namespace PcHistory\Entities;
 
 
 class Trademark extends \Eloquent  {
-    protected $fillable = [];
+    protected $fillable = array(
+
+        'name',
+        'description',
+
+    );
 
     public function pcs(){
         return $this->hasMany('PcHistory\Entities\Pc');

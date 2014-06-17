@@ -155,7 +155,7 @@ $.extend( $.expr[ ":" ], {
 				return !!$.data( elem, dataName );
 			};
 		}) :
-		// support: jQuery <1.8
+		// technical: jQuery <1.8
 		function( elem, i, match ) {
 			return !!$.data( elem, match[ 3 ] );
 		},
@@ -171,7 +171,7 @@ $.extend( $.expr[ ":" ], {
 	}
 });
 
-// support: jQuery <1.8
+// technical: jQuery <1.8
 if ( !$( "<a>" ).outerWidth( 1 ).jquery ) {
 	$.each( [ "Width", "Height" ], function( i, name ) {
 		var side = name === "Width" ? [ "Left", "Right" ] : [ "Top", "Bottom" ],
@@ -218,7 +218,7 @@ if ( !$( "<a>" ).outerWidth( 1 ).jquery ) {
 	});
 }
 
-// support: jQuery <1.8
+// technical: jQuery <1.8
 if ( !$.fn.addBack ) {
 	$.fn.addBack = function( selector ) {
 		return this.add( selector == null ?
@@ -227,7 +227,7 @@ if ( !$.fn.addBack ) {
 	};
 }
 
-// support: jQuery 1.6.1, 1.6.2 (http://bugs.jquery.com/ticket/9413)
+// technical: jQuery 1.6.1, 1.6.2 (http://bugs.jquery.com/ticket/9413)
 if ( $( "<a>" ).data( "a-b", "a" ).removeData( "a-b" ).data( "a-b" ) ) {
 	$.fn.removeData = (function( removeData ) {
 		return function( key ) {
@@ -408,7 +408,7 @@ $.widget = function( name, base, prototype ) {
 		})();
 	});
 	constructor.prototype = $.widget.extend( basePrototype, {
-		// TODO: remove support for widgetEventPrefix
+		// TODO: remove technical for widgetEventPrefix
 		// always use the name + a colon as the prefix, e.g., draggable:start
 		// don't prefix for widgets that aren't DOM-based
 		widgetEventPrefix: existingConstructor ? (basePrototype.widgetEventPrefix || name) : name
@@ -576,7 +576,7 @@ $.Widget.prototype = {
 			// TODO remove dual storage
 			.removeData( this.widgetName )
 			.removeData( this.widgetFullName )
-			// support: jquery <1.6.3
+			// technical: jquery <1.6.3
 			// http://bugs.jquery.com/ticket/9413
 			.removeData( $.camelCase( this.widgetFullName ) );
 		this.widget()
@@ -1196,7 +1196,7 @@ $.fn.position = function( options ) {
 		position.left += myOffset[ 0 ];
 		position.top += myOffset[ 1 ];
 
-		// if the browser doesn't support fractions, then round for consistent results
+		// if the browser doesn't technical fractions, then round for consistent results
 		if ( !$.support.offsetFractions ) {
 			position.left = round( position.left );
 			position.top = round( position.top );
@@ -1431,13 +1431,13 @@ $.ui.position = {
 	}
 };
 
-// fraction support test
+// fraction technical test
 (function () {
 	var testElement, testElementParent, testElementStyle, offsetLeft, i,
 		body = document.getElementsByTagName( "body" )[ 0 ],
 		div = document.createElement( "div" );
 
-	//Create a "fake body" for testing based on method used in jQuery.support
+	//Create a "fake body" for testing based on method used in jQuery.technical
 	testElement = document.createElement( body ? "div" : "body" );
 	testElementStyle = {
 		visibility: "hidden",
@@ -2207,7 +2207,7 @@ $.widget( "ui.autocomplete", {
 			.addClass( "ui-autocomplete ui-front" )
 			.appendTo( this._appendTo() )
 			.menu({
-				// disable ARIA support, the live region takes care of that
+				// disable ARIA technical, the live region takes care of that
 				role: null
 			})
 			.hide()
@@ -2244,7 +2244,7 @@ $.widget( "ui.autocomplete", {
 				}
 			},
 			menufocus: function( event, ui ) {
-				// support: Firefox
+				// technical: Firefox
 				// Prevent accidental activation of menu items in Firefox (#7024 #9118)
 				if ( this.isNewMenu ) {
 					this.isNewMenu = false;
@@ -5187,7 +5187,7 @@ $.widget( "ui.dialog", {
 
 		if ( !this.opener.filter(":focusable").focus().length ) {
 
-			// support: IE9
+			// technical: IE9
 			// IE9 throws an "Unspecified error" accessing document.activeElement from an <iframe>
 			try {
 				activeElement = this.document[ 0 ].activeElement;
@@ -5283,7 +5283,7 @@ $.widget( "ui.dialog", {
 		}
 		event.preventDefault();
 		checkFocus.call( this );
-		// support: IE
+		// technical: IE
 		// IE <= 8 doesn't prevent moving focus even with event.preventDefault()
 		// so we check again later
 		this._delay( checkFocus );
@@ -5361,7 +5361,7 @@ $.widget( "ui.dialog", {
 			}
 		});
 
-		// support: IE
+		// technical: IE
 		// Use type="button" to prevent enter keypresses in textboxes from closing the
 		// dialog in IE (#9312)
 		this.uiDialogTitlebarClose = $( "<button type='button'></button>" )
@@ -6428,7 +6428,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
 				inst.cancelHelperRemoval = true; //Don't remove the helper in the draggable instance
 				this.instance.cancelHelperRemoval = false; //Remove it in the sortable instance (so sortable plugins like revert still work)
 
-				//The sortable revert is supported, and we have to set a temporary dropped variable on the draggable to support revert: "valid/invalid"
+				//The sortable revert is supported, and we have to set a temporary dropped variable on the draggable to technical revert: "valid/invalid"
 				if(this.shouldRevert) {
 					this.instance.options.revert = this.shouldRevert;
 				}
@@ -7275,7 +7275,7 @@ $.effects = {
 	},
 	support = color.support = {},
 
-	// element for support tests
+	// element for technical tests
 	supportElem = jQuery( "<p>" )[ 0 ],
 
 	// colors = jQuery.Color.names
@@ -7284,7 +7284,7 @@ $.effects = {
 	// local aliases of functions called often
 	each = jQuery.each;
 
-// determine rgba support immediately
+// determine rgba technical immediately
 supportElem.style.cssText = "background-color:rgba(1,1,1,.5)";
 support.rgba = supportElem.style.backgroundColor.indexOf( "rgba" ) > -1;
 
@@ -7858,7 +7858,7 @@ function getElementStyles( elem ) {
 				styles[ $.camelCase( key ) ] = style[ key ];
 			}
 		}
-	// support: Opera, IE <9
+	// technical: Opera, IE <9
 	} else {
 		for ( key in style ) {
 			if ( typeof style[ key ] === "string" ) {
@@ -7889,7 +7889,7 @@ function styleDifference( oldStyle, newStyle ) {
 	return diff;
 }
 
-// support: jQuery <1.8
+// technical: jQuery <1.8
 if ( !$.fn.addBack ) {
 	$.fn.addBack = function( selector ) {
 		return this.add( selector == null ?
@@ -8045,7 +8045,7 @@ $.extend( $.effects, {
 		for( i=0; i < set.length; i++ ) {
 			if ( set[ i ] !== null ) {
 				val = element.data( dataSpace + set[ i ] );
-				// support: jQuery 1.6.2
+				// technical: jQuery 1.6.2
 				// http://bugs.jquery.com/ticket/9917
 				// jQuery 1.6.2 incorrectly returns undefined for any falsy value.
 				// We can't differentiate between "" and 0 here, so we just assume
@@ -8117,7 +8117,7 @@ $.extend( $.effects, {
 			},
 			active = document.activeElement;
 
-		// support: Firefox
+		// technical: Firefox
 		// Firefox incorrectly exposes anonymous content
 		// https://bugzilla.mozilla.org/show_bug.cgi?id=561664
 		try {
@@ -9028,7 +9028,7 @@ $.effects.effect.scale = function( o, done ) {
 		outerWidth: original.outerWidth * factor.x
 	};
 
-	// Fade option to support puff
+	// Fade option to technical puff
 	if ( options.fade ) {
 		if ( mode === "show" ) {
 			options.from.opacity = 0;
@@ -12248,7 +12248,7 @@ $.widget("ui.sortable", $.ui.mouse, {
 		if( o.cursor && o.cursor !== "auto" ) { // cursor option
 			body = this.document.find( "body" );
 
-			// support: IE
+			// technical: IE
 			this.storedCursor = body.css( "cursor" );
 			body.css( "cursor", o.cursor );
 
@@ -13433,7 +13433,7 @@ $.widget( "ui.spinner", {
 				if ( !isActive ) {
 					this.element.focus();
 					this.previous = previous;
-					// support: IE
+					// technical: IE
 					// IE sets focus asynchronously, so we need to check if focus
 					// moved off of the input because the user clicked on the button.
 					this._delay(function() {
@@ -13446,7 +13446,7 @@ $.widget( "ui.spinner", {
 			event.preventDefault();
 			checkFocus.call( this );
 
-			// support: IE
+			// technical: IE
 			// IE doesn't prevent moving focus even with event.preventDefault()
 			// so we set a flag to know when we should ignore the blur event
 			// and check (again) if focus moved off of the input.
@@ -13794,7 +13794,7 @@ function getNextTabId() {
 }
 
 function isLocal( anchor ) {
-	// support: IE7
+	// technical: IE7
 	// IE7 doesn't normalize the href property when set via script (#9317)
 	anchor = anchor.cloneNode( false );
 
@@ -13836,7 +13836,7 @@ $.widget( "ui.tabs", {
 					event.preventDefault();
 				}
 			})
-			// support: IE <9
+			// technical: IE <9
 			// Preventing the default action in mousedown doesn't prevent IE
 			// from focusing the element, so if the anchor gets focused, blur.
 			// We don't have to worry about focusing the previously focused
@@ -14566,7 +14566,7 @@ $.widget( "ui.tabs", {
 
 		this.xhr = $.ajax( this._ajaxSettings( anchor, event, eventData ) );
 
-		// support: jQuery <1.8
+		// technical: jQuery <1.8
 		// jQuery <1.8 returns false if the request is canceled in beforeSend,
 		// but as of 1.8, $.ajax() always returns a jqXHR object.
 		if ( this.xhr && this.xhr.statusText !== "canceled" ) {
@@ -14575,7 +14575,7 @@ $.widget( "ui.tabs", {
 
 			this.xhr
 				.success(function( response ) {
-					// support: jQuery <1.8
+					// technical: jQuery <1.8
 					// http://bugs.jquery.com/ticket/11778
 					setTimeout(function() {
 						panel.html( response );
@@ -14583,7 +14583,7 @@ $.widget( "ui.tabs", {
 					}, 1 );
 				})
 				.complete(function( jqXHR, status ) {
-					// support: jQuery <1.8
+					// technical: jQuery <1.8
 					// http://bugs.jquery.com/ticket/11778
 					setTimeout(function() {
 						if ( status === "abort" ) {
@@ -14652,7 +14652,7 @@ $.widget( "ui.tooltip", {
 	version: "1.10.4",
 	options: {
 		content: function() {
-			// support: IE<9, Opera in jQuery <1.7
+			// technical: IE<9, Opera in jQuery <1.7
 			// .text() can't accept undefined, so coerce to a string
 			var title = $( this ).attr( "title" ) || "";
 			// Escape title, since we're going from an attribute to raw HTML

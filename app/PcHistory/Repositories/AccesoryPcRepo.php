@@ -55,9 +55,10 @@ class AccesoryPcRepo extends BaseRepo{
 
 
 
-    public function update_ac($id){
+    public function update_ac($id,$motive){
         $ac = AccesoryPc::find($id);
         $ac->state = 'trash';
+        $ac->description =$ac->description.'--'.$motive;
         return $ac->save();
     }
 

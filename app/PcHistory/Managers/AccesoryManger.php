@@ -14,25 +14,13 @@ class AccesoryManger extends BaseManager{
 
     public function  getRules(){
         $rules=[
-            'accesory_id'			=>'required',
-            'so_id'				=>'required',
+
             'name'			=>'required',
-            'so_id'=>'',
-            'type'=>'',
-            'internal_id'=>'',
-            'location'=>'',
-            'owner'=>'',
-            'model'=>'',
-            'serial'=>'',
-            'voltage'=>'',
-            'maintenance_day'=>'',
-            'buy_date'=>'',
-            'password'=>'',
-            'observation'=>'',
+            'description'=>'',
+            'capacity'=>'',
             'photo'=>'',
+            'unity'=>'',
             'state'=>'',
-            'order'=>'',
-            'type_pc'=>'',
 
         ];
         return $rules;
