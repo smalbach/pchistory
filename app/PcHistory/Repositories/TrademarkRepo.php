@@ -25,4 +25,10 @@ class TrademarkRepo  extends BaseRepo{
             return $users;
     }
 
+    public function  newTrademark(){
+        $Trademark = new Trademark();
+       return $Trademark;
+
+    }
+
 } 

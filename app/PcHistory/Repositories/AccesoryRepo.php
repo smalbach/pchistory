@@ -1,10 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Aikon
- * Date: 27/05/14
- * Time: 15:44
- */
+
+
 
 namespace PcHistory\Repositories;
 use PcHistory\Entities\Accesory;
@@ -31,6 +27,11 @@ class AccesoryRepo   extends BaseRepo{
         return $users;
     }
 
+    public function  newAccesory(){
+        $Accesory = new Accesory();
+        return $Accesory;
+
+    }
 
 
 

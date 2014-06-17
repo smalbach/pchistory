@@ -18,4 +18,11 @@ class SoRepo  extends BaseRepo{
         return $users;
     }
 
+
+    public function  newSo(){
+        $so = new So();
+        return $so;
+
+    }
+
 } 

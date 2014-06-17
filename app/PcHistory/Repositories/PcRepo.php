@@ -20,7 +20,8 @@ class PcRepo extends BaseRepo {
 
     public function  newPc(){
         $pc = new Pc();
-        $pc->company_id=Session::get('company_id');
+        $company=Session::get('company');
+        $pc->company_id=$company->id;
         return $pc;
 
     }
@@ -28,7 +29,7 @@ class PcRepo extends BaseRepo {
     public function search_all($company){
         $pc = DB::table('pcs')
                   ->where('company_id','=',$company->id)
-                  ->paginate(5);
+                  ->paginate(30);
         return $pc;
     }
 

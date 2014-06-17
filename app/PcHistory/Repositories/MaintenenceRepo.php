@@ -32,11 +32,12 @@ class MaintenenceRepo extends BaseRepo{
             ->join('companies', 'companies.id', '=', 'pcs.company_id')
             ->join('suports', 'suports.id', '=', 'maintenances.support_id')
             ->leftJoin('reports', 'reports.maintenance_id', '=', 'maintenances.id')
-            ->select('maintenances.id as m_id',
+            ->select(
+                'maintenances.id as m_id',
                 'pcs.name',
                 'pcs.location',
                 'pcs.owner',
-                'suports.name as support',
+                'suports.name as technical',
                 'maintenances.issues',
                 'maintenances.priority',
                 'maintenances.observation',
@@ -48,7 +49,7 @@ class MaintenenceRepo extends BaseRepo{
             )
             ->where('companies.id','=',$company)
             ->where('maintenances.state','like','%'.$state.'%')
-            ->paginate(10)
+            ->paginate(30)
             ;
 
         return $results;
@@ -56,21 +57,48 @@ class MaintenenceRepo extends BaseRepo{
     }
 
 
+    public function search_all_orders($support,$state='waiting'){
 
-    public function updtae_order($id){
-        $ac = Maintenance::find($id);
-        $ac->state = 'processing';
-        $ac->save();
-        return $ac;
+        $results = DB::table('maintenances')
+            ->join('pcs', 'pcs.id', '=', 'maintenances.pc_id')
+            ->join('companies', 'companies.id', '=', 'pcs.company_id')
+            ->join('suports', 'suports.id', '=', 'maintenances.support_id')
+            ->leftJoin('reports', 'reports.maintenance_id', '=', 'maintenances.id')
+            ->select('maintenances.id as m_id',
+                'pcs.name',
+                'pcs.location',
+                'pcs.owner',
+                'companies.name as company',
+                'maintenances.issues',
+                'maintenances.priority',
+                'maintenances.observation',
+                'maintenances.state',
+                'pcs.id as pc_id',
+                'reports.find',
+                'reports.tecnical_report',
+                'reports.recommendations'
+            )
+            ->where('maintenances.support_id','=',$support)
+            ->where('maintenances.state','like','%'.$state.'%')
+            ->orderby('reports.id','desc')
+            ->paginate(30)
+        ;
+
+        return $results;
+
     }
 
 
-    public function updtae_order_state($id,$state){
+
+    public function updtae_order($id,$state='processing'){
         $ac = Maintenance::find($id);
         $ac->state = $state;
         $ac->save();
         return $ac;
     }
+
+
+
 
 
 
