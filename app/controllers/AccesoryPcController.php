@@ -40,14 +40,16 @@ class AccesoryPcController extends BaseController{
 
 
         $accesories= $this->apRepo->searhAll($id);
+        //echo "wii";
         return Response::json($accesories);
     }
 
     public function delete_ac(){
         $id=Input::get('accesory_del');
+        $motive=Input::get('motive');
 
 
-       $accesories= $this->apRepo->update_ac($id);
+       $accesories= $this->apRepo->update_ac($id,$motive);
        // return Response::json($accesories);
     }
 

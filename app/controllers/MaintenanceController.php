@@ -19,7 +19,7 @@ class MaintenanceController extends BaseController{
         $this->companyRepo=$companyrepo;
         $this->maintenenceRepo=$maintenenceRepo;
         $this->pcRepo= $pcRepo;
-        $this->company=$this->companyRepo->find(Session::get('company_id'));
+        $this->company=Session::get('company');
     }
 
     public function new_order(){
@@ -73,7 +73,7 @@ class MaintenanceController extends BaseController{
         $orders = $this->maintenenceRepo->updtae_order($id);
         $company=$this->company;
 
-        return View::make('maintenances/make_order', compact('pc','orders','company','id'));
+        return View::make('technical/make_order', compact('pc','orders','company','id'));
     }
 
 

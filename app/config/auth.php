@@ -28,7 +28,7 @@ return array(
 	|
 	*/
 
-	'model' => 'User',
+	'model' => 'PcHistory\Entities\User',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -57,6 +57,7 @@ return array(
 	| they have less time to be guessed. You may change this as needed.
 	|
 	*/
+
 
 	'reminder' => array(
 

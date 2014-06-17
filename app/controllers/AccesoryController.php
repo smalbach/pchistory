@@ -2,7 +2,7 @@
 
 
 use PcHistory\Repositories\AccesoryRepo;
-
+use PcHistory\Managers\AccesoryManger;
 
 class AccesoryController extends BaseController{
     protected $accesoryRepo;
@@ -23,6 +23,17 @@ class AccesoryController extends BaseController{
 
     }
 
+    public function save(){
+
+        $accesory= $this->accesoryRepo->newAccesory();
+        $manager = new AccesoryManger($accesory, Input::all());
+        if($manager->save()){
+            $id=$manager->lastId();
+            return $id;
+        }
+
+        return "error";
+    }
 
 
 } 
