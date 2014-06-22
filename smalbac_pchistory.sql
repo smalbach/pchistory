@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 16-06-2014 a las 17:47:15
+-- Tiempo de generación: 22-06-2014 a las 17:22:33
 -- Versión del servidor: 5.5.34-MariaDB-cll-lve
 -- Versión de PHP: 5.4.23
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de datos: `ottsinc_pchistory`
+-- Base de datos: `smalbac_pchistory`
 --
 
 -- --------------------------------------------------------
@@ -334,7 +334,14 @@ CREATE TABLE IF NOT EXISTS `maintenances` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `maintenances`
+--
+
+INSERT INTO `maintenances` (`id`, `pc_id`, `support_id`, `issues`, `priority`, `observation`, `state`, `created_at`, `updated_at`) VALUES
+(1, 21, 1, 'No prende', 'medium', 'Observando', 'fix', '2014-06-17 00:26:44', '2014-06-17 00:48:33');
 
 -- --------------------------------------------------------
 
@@ -412,7 +419,18 @@ INSERT INTO `pchistories` (`pc_id`, `company_id`, `user_id`, `trademark_id`, `so
 (18, 1, 20, 5, 5, 'Support', 'Smalbach pc', '00001', 'Home', 'yo', '112154', 'sn1111', '110', '2014-06-01', '2014-06-07', '------', 'none', 'ffff', 'active', 10, 'test', 'desktop', '2014-06-07 18:54:19', '2014-06-07 18:54:19'),
 (18, 1, 20, 5, 2, 'Support', 'Smalbach pc', '00001', 'Home', 'yo', '112154', 'sn1111', '110', '2014-06-01', '2014-06-07', '------', 'none', 'ffff', 'active', 10, 'Probando', 'desktop', '2014-06-07 22:37:10', '2014-06-07 22:37:10'),
 (32, 1, 43, 1, 1, 'Assistance', 'CONSULTORIO 2', '214', 'CONSULTORIO 2', 'DR RUIZ', 'CQ1 3007LA', 'QS289AA#ABM', '110', '0000-00-00', '0000-00-00', '18', '', '', 'active', 10, 'Error en el nombre del computador', 'all in one', '2014-06-12 18:40:03', '2014-06-12 18:40:03'),
-(25, 1, 43, 8, 7, 'Assistance', 'Evelyn Anderson', '', 'Gerencia', 'Evelyn Anderson', 'c460-VS1402p0xg', 'vs81189282', '19.5v --- 6.15a', '2014-12-31', '0000-00-00', '', '', '', 'active', 10, 'Cambio de gerancia a Admisiones, el equipo de admisiones esta ba lento y no funcionaba adecuadamente', 'all in one', '2014-06-15 00:35:10', '2014-06-15 00:35:10');
+(25, 1, 43, 8, 7, 'Assistance', 'Evelyn Anderson', '', 'Gerencia', 'Evelyn Anderson', 'c460-VS1402p0xg', 'vs81189282', '19.5v --- 6.15a', '2014-12-31', '0000-00-00', '', '', '', 'active', 10, 'Cambio de gerancia a Admisiones, el equipo de admisiones esta ba lento y no funcionaba adecuadamente', 'all in one', '2014-06-15 00:35:10', '2014-06-15 00:35:10'),
+(26, 1, 20, 9, 1, 'Assistance', 'Evelyn Anderson Desktop', '82', 'Gerencia', 'Evelyn Anderson', 'sdk cd1902s', 'scd2s11120097', '110', '2014-06-30', '0000-00-00', 'evelink', 'Equipo para Trasferencia ', '', 'active', 10, 'Cambio de la contraseña', 'desktop', '2014-06-17 00:19:58', '2014-06-17 00:19:58'),
+(31, 1, 20, 1, 1, 'Assistance', 'CONSULTORIO 2', '145', 'CONSULTORIO 2', 'DR RUIZ', 'CQ1110LA', '4CE14016R', '110', '0000-00-00', '0000-00-00', 'cos2030', '', '', 'active', 10, 'test', 'desktop', '2014-06-17 00:20:51', '2014-06-17 00:20:51'),
+(32, 1, 20, 1, 1, 'Assistance', 'CONSULTORIO 1', '214', 'CONSULTORIO 1', 'DR RUIZ', 'CQ1 3007LA', 'QS289AA#ABM', '110', '0000-00-00', '0000-00-00', '18', '', '', 'active', 10, '-----hgjghj', 'all in one', '2014-06-17 00:21:21', '2014-06-17 00:21:21'),
+(26, 1, 20, 9, 1, 'Assistance', 'Evelyn Anderson Desktop', '82', 'Gerencia', 'Evelyn Anderson', 'sdk cd1902s', 'scd2s11120097', '110', '2014-06-30', '0000-00-00', '', 'Equipo para Trasferencia ', '', 'active', 10, 'Cambio de nombre', 'desktop', '2014-06-17 00:22:22', '2014-06-17 00:22:22'),
+(21, 1, 20, 1, 5, 'Assistance', 'Auxiliar Administrativo', '52', 'Administracion', 'Katia Centenaro', 'sr5117la', '--', '110', '2014-06-07', '0000-00-00', '', 'Equipo para Depreciar', '', 'active', 10, 'actualizacion', 'desktop', '2014-06-17 00:23:21', '2014-06-17 00:23:21'),
+(22, 1, 20, 3, 2, 'Assistance', 'Servidor Contable ', '', 'Administracion', 'Medardo', '', '--', '110', '2014-06-13', '0000-00-00', 'En administrador', 'Computador para el Software Contable con dos usuarios', '', 'active', 10, 'Una actualizacion', 'desktop', '2014-06-17 00:24:02', '2014-06-17 00:24:02'),
+(25, 1, 20, 8, 7, 'Assistance', 'Admisiones 2', '', 'Admisiones', 'Shirley', 'c460-VS1402p0xg', 'vs81189282', '19.5v --- 6.15a', '2014-12-31', '0000-00-00', '', '', '', 'active', 10, 'Update', 'all in one', '2014-06-17 00:24:34', '2014-06-17 00:24:34'),
+(27, 1, 20, 10, 7, 'Assistance', 'Citas Telefonicas', '', 'Administracion', 'Esmeralda Arciniegas', 'twin 3800', 'b151112321645', '110', '2014-12-31', '0000-00-00', '', '', '', 'active', 10, 'una actualizacion', 'desktop', '2014-06-17 00:25:16', '2014-06-17 00:25:16'),
+(39, 1, 20, 2, 1, 'Assistance', 'AUXILIAR ADMINIDONES', '', 'ADMINIDONES', 'SHYRLEY', 'ATOM D525', '', '', '0000-00-00', '0000-00-00', '', '', '', 'active', 10, 'Admi', 'desktop', '2014-06-17 00:26:06', '2014-06-17 00:26:06'),
+(31, 1, 20, 1, 1, 'Assistance', 'CONSULTORIO 2', '145', 'CONSULTORIO 2', 'DR RUIZ', 'CQ1110LA', '4CE14016R', '110', '0000-00-00', '0000-00-00', '', '', '', 'active', 10, 'Actualización de datos', 'desktop', '2014-06-17 00:54:27', '2014-06-17 00:54:27'),
+(32, 1, 20, 1, 1, 'Assistance', 'CONSULTORIO 1', '214', 'CONSULTORIO 1', 'DR RUIZ', 'CQ1 3007LA', 'QS289AA#ABM', '110', '0000-00-00', '0000-00-00', '', '', '', 'active', 10, 'aaaa', 'all in one', '2014-06-17 00:55:11', '2014-06-17 00:55:11');
 
 -- --------------------------------------------------------
 
@@ -451,25 +469,25 @@ CREATE TABLE IF NOT EXISTS `pcs` (
 --
 
 INSERT INTO `pcs` (`id`, `company_id`, `trademark_id`, `so_id`, `type`, `name`, `internal_id`, `location`, `owner`, `model`, `serial`, `voltage`, `maintenance_day`, `buy_date`, `password`, `observation`, `photo`, `state`, `order`, `created_at`, `updated_at`, `type_pc`) VALUES
-(21, 1, 1, 5, 'Assistance', 'Auxiliar Administrativo', '52', 'Administracion', 'Katia Centenaro', 'sr5117la', '--', '110', '2014-06-07', '0000-00-00', '', 'Equipo para Depreciar', '', 'active', 10, '2014-05-29 23:58:23', '2014-05-29 23:58:23', 'desktop'),
-(22, 1, 3, 2, 'Assistance', 'Servidor Contable ', '', 'Administracion', 'Medardo', '', '--', '110', '2014-06-13', '0000-00-00', 'En administrador', 'Computador para el Software Contable con dos usuarios', '', 'active', 10, '2014-05-30 00:22:25', '2014-05-30 00:22:25', 'desktop'),
+(21, 1, 1, 5, 'Assistance', 'Auxiliar Administrativo', '52', 'Administracion', 'Maria ', 'sr5117la', '--', '110', '2014-06-07', '0000-00-00', '', 'Equipo para Depreciar', '', 'active', 10, '2014-05-29 23:58:23', '2014-06-17 00:23:21', 'desktop'),
+(22, 1, 3, 2, 'Assistance', 'Servidor Contable ', '', 'Administracion', 'El contador', '', '--', '110', '2014-06-13', '0000-00-00', 'En administrador', 'Computador para el Software Contable con dos usuarios', '', 'active', 10, '2014-05-30 00:22:25', '2014-06-17 00:24:02', 'desktop'),
 (23, 1, 3, 6, 'Assistance', 'Copias de Seguridad', '19', 'Administracion', 'Administracion', '', '', '110', '2014-06-13', '0000-00-00', '', 'Equipo para las copias de seguridad del siscolsi', '', 'active', 10, '2014-05-30 00:34:34', '2014-05-30 00:34:34', 'desktop'),
 (24, 1, 2, 7, 'Assistance', 'Talento', '', 'Gerencia', 'Gerencia', '18-1209la', '5cm3280ff2', '110', '2014-12-31', '0000-00-00', 'melissamejia', '', '', 'active', 10, '2014-05-30 00:54:56', '2014-05-30 00:54:56', 'all in one'),
-(25, 1, 8, 7, 'Assistance', 'Admisiones 2', '', 'Admisiones', 'Shirley', 'c460-VS1402p0xg', 'vs81189282', '19.5v --- 6.15a', '2014-12-31', '0000-00-00', '', '', '', 'active', 10, '2014-05-30 01:12:25', '2014-06-15 00:35:10', 'all in one'),
-(26, 1, 9, 1, 'Assistance', 'Evelyn Anderson Desktop', '82', 'Gerencia', 'Evelyn Anderson', 'sdk cd1902s', 'scd2s11120097', '110', '2014-06-30', '0000-00-00', 'evelink', 'Equipo para Trasferencia ', '', 'active', 10, '2014-05-30 01:29:24', '2014-05-30 01:29:24', 'desktop'),
-(27, 1, 10, 7, 'Assistance', 'Citas Telefonicas', '', 'Administracion', 'Esmeralda Arciniegas', 'twin 3800', 'b151112321645', '110', '2014-12-31', '0000-00-00', '', '', '', 'active', 10, '2014-05-30 01:43:33', '2014-05-30 01:43:33', 'desktop'),
+(25, 1, 8, 7, 'Assistance', 'Admisiones 2', '', 'Admisiones', 'Shakira', 'c460-VS1402p0xg', 'vs811g8924422822', '19.5v --- 6.15a', '2014-12-31', '0000-00-00', '', '', '', 'active', 10, '2014-05-30 01:12:25', '2014-06-17 00:24:34', 'all in one'),
+(26, 1, 9, 1, 'Assistance', 'Juanita perez', '82', 'Gerencia', 'Juanita perez', 'sdk cd1902s', 'scd2s11120097', '110', '2014-06-30', '0000-00-00', '', 'Equipo para Trasferencia ', '', 'active', 10, '2014-05-30 01:29:24', '2014-06-17 00:22:22', 'desktop'),
+(27, 1, 10, 7, 'Assistance', 'Citas Telefonicas', '', 'Administracion', 'Consuelo', 'twin 3800', 'ffrrreee', '110', '2014-12-31', '0000-00-00', '', '', '', 'active', 10, '2014-05-30 01:43:33', '2014-06-17 00:25:16', 'desktop'),
 (28, 1, 4, 7, 'Assistance', 'Servidor', '', 'Cuarto de redes', 'Administracion', 'vostro 470', '', '110', '2014-07-31', '0000-00-00', '', '', '', 'active', 10, '2014-06-10 22:31:58', '2014-06-10 22:31:58', 'desktop'),
 (29, 1, 9, 5, 'Assistance', 'Consultorio 4', '', 'Consultorio 4', '', '', '', '110', '0000-00-00', '0000-00-00', 'cos2030', '', '', 'active', 10, '2014-06-11 19:41:03', '2014-06-11 19:41:03', 'desktop'),
 (30, 1, 1, 1, 'Assistance', 'CONSULTORIO 3', '104', 'Consultorio 3', '', 'CQ1110LA', '', '110', '0000-00-00', '0000-00-00', '', '', '', 'active', 10, '2014-06-11 19:45:54', '2014-06-11 19:45:54', 'desktop'),
-(31, 1, 1, 1, 'Assistance', 'CONSULTORIO 2', '145', 'CONSULTORIO 2', 'DR RUIZ', 'CQ1110LA', '4CE14016R', '110', '0000-00-00', '0000-00-00', 'cos2030', '', '', 'active', 10, '2014-06-11 19:52:02', '2014-06-11 19:52:02', 'desktop'),
-(32, 1, 1, 1, 'Assistance', 'CONSULTORIO 1', '214', 'CONSULTORIO 1', 'DR RUIZ', 'CQ1 3007LA', 'QS289AA#ABM', '110', '0000-00-00', '0000-00-00', '18', '', '', 'active', 10, '2014-06-11 19:55:51', '2014-06-12 18:40:04', 'all in one'),
+(31, 1, 1, 1, 'Assistance', 'CONSULTORIO 2', '145', 'CONSULTORIO 2', 'Dr Matasanos', 'CQ1110LA', '', '110', '2014-06-16', '2014-06-30', '', '', '', 'active', 10, '2014-06-11 19:52:02', '2014-06-17 00:54:27', 'desktop'),
+(32, 1, 1, 1, 'Assistance', 'CONSULTORIO 1', '214', 'CONSULTORIO 1', 'DR House', 'CQ1 3007LA', '', '110', '2014-06-16', '2014-06-23', '', '', '', 'active', 10, '2014-06-11 19:55:51', '2014-06-17 00:55:11', 'all in one'),
 (33, 1, 11, 2, 'Assistance', 'Campimetro', '', '', 'MAIRA', '', '', '110', '0000-00-00', '0000-00-00', '', '', '', 'active', 10, '2014-06-12 19:02:26', '2014-06-12 19:02:26', 'desktop'),
 (34, 1, 1, 1, 'Assistance', 'Jefe marta 1', '', '', 'Jefe marta', 'CQ1 3007LA', '4CE2081CV8', '110', '0000-00-00', '0000-00-00', 'PROGRAMACION', '', '', 'active', 10, '2014-06-12 19:06:18', '2014-06-12 19:06:18', 'desktop'),
 (35, 1, 2, 2, 'Assistance', 'JEFE MARTHA 2', '', '', 'JEFE MARTHA', 'G4 1064LA NOTEBOOK PC', '', '110', '0000-00-00', '0000-00-00', '', '', '', 'active', 10, '2014-06-12 19:11:32', '2014-06-12 19:11:32', 'laptop'),
 (36, 1, 8, 5, 'Assistance', 'JEFE MARTA ANGEO', '', '', 'JEFE MARTA ', '', '', '110', '0000-00-00', '0000-00-00', '', '', '', 'active', 10, '2014-06-12 19:20:40', '2014-06-12 19:20:40', 'desktop'),
 (37, 1, 1, 1, 'Assistance', 'QUIROFANO', '125', 'QUIROFANO', 'MARTHA BITAR', 'CQ1110LA', '4CE2081CV8', '110', '0000-00-00', '2012-06-29', '', '', '', 'active', 10, '2014-06-16 16:16:23', '2014-06-16 16:16:23', 'desktop'),
 (38, 1, 8, 7, 'Assistance', 'Shirley', '', 'Admisiones', 'Shirley', 'r39023119113', 'es10957889', '110', '0000-00-00', '0000-00-00', '', '', '', 'active', 10, '2014-06-16 16:23:10', '2014-06-16 16:23:10', 'desktop'),
-(39, 1, 2, 1, 'Assistance', 'AUXILIAR ADMINIDONES', '', 'ADMINIDONES', 'SHYRLEY', 'ATOM D525', '', '', '0000-00-00', '0000-00-00', '', '', '', 'active', 10, '2014-06-16 14:58:08', '2014-06-16 14:58:08', 'desktop'),
+(39, 1, 2, 1, 'Assistance', 'AUXILIAR ADMINIDONES', '', 'ADMISIONES', 'Juana de arco', 'ATOM D525', '', '', '0000-00-00', '0000-00-00', '', '', '', 'active', 10, '2014-06-16 14:58:08', '2014-06-17 00:26:06', 'desktop'),
 (40, 1, 8, 7, 'Assistance', 'Facturacion', '', 'facturacion', 'Carmen Malo soli', 'h520s', 'es10957940', '110', '0000-00-00', '0000-00-00', '', '', '', 'active', 10, '2014-06-16 15:05:00', '2014-06-16 15:05:00', 'desktop');
 
 -- --------------------------------------------------------
@@ -488,7 +506,7 @@ CREATE TABLE IF NOT EXISTS `reports` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=25 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=26 ;
 
 --
 -- Volcado de datos para la tabla `reports`
@@ -498,7 +516,8 @@ INSERT INTO `reports` (`id`, `maintenance_id`, `find`, `tecnical_report`, `recom
 (20, 8, 'Todo bien', 'todo bien', 'bien', 'fix', '2014-06-07 22:22:04', '2014-06-07 22:22:04'),
 (22, 10, 'No habia energia', 'se conecto y ya', 'Revisar si esta conectado y ya', 'fix', '2014-06-07 22:25:30', '2014-06-07 22:25:30'),
 (23, 9, 'Memoria esa dañada', 'Se necesita el cambio de memoria', 'Regular la luz', 'processing', '2014-06-07 22:29:50', '2014-06-07 22:29:50'),
-(24, 9, 'Cambio de memori', 'Se cambio la memoria y esta funcinando correctamente', '', 'fix', '2014-06-07 22:31:15', '2014-06-07 22:31:15');
+(24, 9, 'Cambio de memori', 'Se cambio la memoria y esta funcinando correctamente', '', 'fix', '2014-06-07 22:31:15', '2014-06-07 22:31:15'),
+(25, 1, 'Todo bien', 'todo excelente', 'recomendar algo', 'fix', '2014-06-17 00:48:33', '2014-06-17 00:48:33');
 
 -- --------------------------------------------------------
 
@@ -555,8 +574,7 @@ CREATE TABLE IF NOT EXISTS `suports` (
 --
 
 INSERT INTO `suports` (`id`, `name`, `company_id`, `direction`, `phone`, `cell`, `email`, `contact`, `state`, `slug`, `created_at`, `updated_at`) VALUES
-(1, 'Aikon', 1, 'dir ', '111', 'active', '--', '--', 'active', '--', '2014-05-29 04:18:17', '2014-05-29 04:18:17'),
-(2, 'TechSoft', 1, 'Dir ', '222', 'active', '--', '--', 'active', '--', '2014-05-29 04:18:17', '2014-05-29 04:18:17');
+(1, 'Aikon', 1, 'dir ', '111', 'active', '--', '--', 'active', '--', '2014-05-29 04:18:17', '2014-05-29 04:18:17');
 
 -- --------------------------------------------------------
 
@@ -609,15 +627,16 @@ CREATE TABLE IF NOT EXISTS `users` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=44 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=46 ;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
 INSERT INTO `users` (`id`, `full_name`, `email`, `password`, `type`, `avatar`, `state`, `remember_token`, `created_at`, `updated_at`) VALUES
-(20, 'Snheidert Smalbach', 'smalbach24@gmail.com', '$2y$10$wXSVcq/Ll5908hf4UD44k.Qqfh74tIO43UZk2na1WRF18V/PbDCBq', 'admin', 'default.png', 'active', 'MGqqrLN8kwYv8drMwVIpPnd6ibK0iob0xMgyvOU9g4EASmyNgcPoEqD28FV7', '2014-05-26 01:48:19', '2014-06-10 22:01:43'),
-(43, 'Evelyn Anderson', 'gerencia.cosltda@gmail.com', '$2y$10$wXSVcq/Ll5908hf4UD44k.Qqfh74tIO43UZk2na1WRF18V/PbDCBq', 'company', '', 'active', 'P5ibf2EAhkGJLQYOs3BWvxKXPySB0IDHLVBVAYeeilBoKMVCEPnF9XfN37wU', '2014-06-10 04:00:00', '2014-06-16 16:53:17');
+(20, 'Snheidert Smalbach', 'admin@admin.com', '$2y$10$wXSVcq/Ll5908hf4UD44k.Qqfh74tIO43UZk2na1WRF18V/PbDCBq', 'company', 'default.png', 'active', 'EdcwsWzr0CC9c7lH9f0pzfm8p2SNrzTx9DFqBLxmhtc0YpZEw7rbB6UOPQQO', '2014-05-26 01:48:19', '2014-06-17 12:04:47'),
+(44, 'Snheidert Smalbach Tech', 'admin1@admin.com', '$2y$10$wXSVcq/Ll5908hf4UD44k.Qqfh74tIO43UZk2na1WRF18V/PbDCBq', 'technical', 'default.png', 'active', 'nebHoaZjkqMbuBHAt0OYYLztsgjfFba769JfjIxuGPJTprdIXliGLXeQSlFj', '2014-05-26 01:48:19', '2014-06-17 00:48:51'),
+(45, 'admin2', 'admin2@admin.com', '$2y$10$VLr9mpk9l/.HcYPwg6EYJuXGTfQHP3XHgFWEYSOUKGHm2.wNWhBWW', 'user_company', '', 'active', 'aR4Pi7DiH5fRbwxpFIDaHC1uvfPfyey4gUfPDWNmfsLqsdZbqRQVpQx72irK', '2014-06-17 00:56:43', '2014-06-17 00:57:25');
 
 -- --------------------------------------------------------
 
@@ -633,14 +652,15 @@ CREATE TABLE IF NOT EXISTS `user_companys` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=11 ;
 
 --
 -- Volcado de datos para la tabla `user_companys`
 --
 
 INSERT INTO `user_companys` (`id`, `user_id`, `company_id`, `state`, `created_at`, `updated_at`) VALUES
-(9, 43, 1, 'active', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(9, 20, 1, 'active', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(10, 45, 1, 'active', '2014-06-17 00:56:43', '2014-06-17 00:56:43');
 
 -- --------------------------------------------------------
 
@@ -656,7 +676,14 @@ CREATE TABLE IF NOT EXISTS `user_supports` (
   `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `user_supports`
+--
+
+INSERT INTO `user_supports` (`id`, `user_id`, `support_id`, `state`, `created_at`, `updated_at`) VALUES
+(1, 44, 1, 'active', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 --
 -- Restricciones para tablas volcadas
