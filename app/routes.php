@@ -33,6 +33,26 @@ Route::post('accesory/save',    ['as'=>'accesory_save', 'uses'=>'AccesoryControl
 
 
 
+//Software
+
+Route::post('software/save',    ['as'=>'software_save', 'uses'=>'SoftwareController@save' ]);
+Route::post('company/software/search/',  ['as'=>'software_search', 'uses'=>'SoftwareController@search' ]);
+Route::post('company/software/pc/add/',  ['as'=>'add_pc_software', 'uses'=>'SoftwarePcController@add_pc' ]);
+Route::get('company/software/pc/show_all/',  ['as'=>'show_pc_software', 'uses'=>'SoftwarePcController@searh_all' ]);
+Route::post('company/software/pc/delete/',  ['as'=>'delete_pc_software', 'uses'=>'SoftwarePcController@delete_ac' ]);
+
+
+
+//Device
+
+Route::post('device/save',    ['as'=>'device_save', 'uses'=>'DeviceController@save' ]);
+Route::post('company/device/search/',  ['as'=>'device_search', 'uses'=>'DeviceController@search' ]);
+Route::post('company/device/pc/add/',  ['as'=>'add_pc_device', 'uses'=>'DevicePcController@add_pc' ]);
+Route::get('company/device/pc/show_all/',  ['as'=>'show_pc_device', 'uses'=>'DevicePcController@searh_all' ]);
+Route::post('company/device/pc/delete/',  ['as'=>'delete_pc_device', 'uses'=>'DevicePcController@delete_ac' ]);
+
+//Route::get('company/software/search/',  ['as'=>'software_search', 'uses'=>'SoftwareController@search' ]);
 //img System route
 //Route::post('img/system/loader',    ['as'=>'accesory_save', 'uses'=>'AccesoryController@save' ]);//images
+
 

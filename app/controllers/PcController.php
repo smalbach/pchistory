@@ -1,10 +1,12 @@
 <?php
-use PcHistory\Repositories\CompanyRepo;
+
 use PcHistory\Repositories\PcRepo;
-use PcHistory\Managers\PcManager;
 use PcHistory\Repositories\AccesoryPcRepo;
-use PcHistory\Managers\PcHistoryManager;
 use PcHistory\Repositories\PcHistoryRepo;
+use PcHistory\Repositories\SoftwarePcRepo;
+use PcHistory\Repositories\DevicePcRepo;
+use PcHistory\Managers\PcHistoryManager;
+use PcHistory\Managers\PcManager;
 
 
 class PcController extends  BaseController{
@@ -15,15 +17,21 @@ class PcController extends  BaseController{
     protected  $pcRepo;
     protected  $accesoryxpcRepo;
     protected  $pcHistoryRepo;
+    protected  $softwarePcRepo;
+    protected  $devicePcRepo;
 
 
     public function __construct(PcRepo $pcRepo,
                                 AccesoryPcRepo $accesoryxPcRepo,
-                                PcHistoryRepo $pcHistoryRepo){
+                                PcHistoryRepo $pcHistoryRepo,
+                                SoftwarePcRepo $softwarePcRepo,
+                                DevicePcRepo $devicePcRepo){
         $this->company=Session::get('company');
         $this->pcRepo=$pcRepo;
         $this->accesoryxpcRepo=$accesoryxPcRepo;
         $this->pcHistoryRepo=$pcHistoryRepo;
+        $this->softwarePcRepo=$softwarePcRepo;
+        $this->devicePcRepo=$devicePcRepo;
 
 
 
@@ -66,10 +74,12 @@ class PcController extends  BaseController{
 
 
         $accesories= $this->accesoryxpcRepo->searhAll($id);
+        $softwares= $this->softwarePcRepo->searhAll($id);
+        $devices= $this->devicePcRepo->searhAll($id);
         //return Response::json($accesories);
 
 
-        return View::make('pcs/detail', compact('pc','company','accesories','id'));
+        return View::make('pcs/detail', compact('pc','company','accesories','id','softwares','devices'));
 
     }
 

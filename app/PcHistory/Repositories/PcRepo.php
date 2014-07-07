@@ -29,7 +29,7 @@ class PcRepo extends BaseRepo {
     public function search_all($company){
         $pc = DB::table('pcs')
                   ->where('company_id','=',$company->id)
-                  ->paginate(30);
+                  ->paginate(2);
         return $pc;
     }
 

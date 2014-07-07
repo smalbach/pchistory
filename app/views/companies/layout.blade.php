@@ -205,6 +205,20 @@
                 $("#lbl_accesory").text(data_sel_row)
                 break
 
+
+            case "searh_software":
+                $("#dialog_add_software_value").dialog("open")
+                $("#software_id").val(codigo_sel_row)
+                $("#lbl_software").text(data_sel_row)
+            break
+
+            case "searh_device":
+                $("#dialog_add_device_value").dialog("open")
+                $("#device_id").val(codigo_sel_row)
+                $("#lbl_device").text(data_sel_row)
+            break
+
+
             case "support":
 
                 $("#support_text").val(data_sel_row)
