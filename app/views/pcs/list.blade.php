@@ -2,11 +2,19 @@
 
 
 @section('content')
+<style>
+    .upper-table tr td,.upper-table tr th{
+        text-transform: uppercase;
+
+    }
+
+</style>
+
 
 <h3>Lista de Equipos</h3>
 
 <h4>Total: <span><strong>{{ $pcs->getTotal() }}</span></strong> </h4>
-<table  class="table  table-striped " >
+<table  class="table  table-striped upper-table" >
 
     <tr class="info">
         <th>Nombre</th>

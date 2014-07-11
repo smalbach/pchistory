@@ -35,6 +35,7 @@ class SoftwarePcRepo extends BaseRepo{
                         )
             ->where('pcs.id','=',$pc)
             ->where('software_pcs.state','=','active')
+            ->orderBy('softwares.name')
             ->get();
         return $results;
     }

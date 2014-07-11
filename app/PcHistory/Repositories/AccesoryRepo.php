@@ -15,6 +15,7 @@ class AccesoryRepo   extends BaseRepo{
     public function findName($name){
 
         $users = Accesory::where('name', 'LIKE', "%$name%")
+            ->orderBy('name')
             ->get(
                 array('id',
                     'name as nombre',

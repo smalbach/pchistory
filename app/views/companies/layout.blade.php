@@ -246,6 +246,7 @@
             width: screenwidth,
             maxWidth: 1000,
             height: screenheight,
+            position: { my: "center", at: "center top" },
             buttons: {
 
                 Seleccionar: function(){

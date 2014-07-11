@@ -14,6 +14,7 @@ class SoftwareRepo extends BaseRepo{
     public function findName($name){
 
         $users = Software::where('name', 'LIKE', "%$name%")
+            ->orderBy('name')
             ->get(
                 array('id',
                     'name as nombre',

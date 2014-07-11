@@ -36,6 +36,7 @@ class DevicePcRepo extends BaseRepo{
                         )
             ->where('pcs.id','=',$pc)
             ->where('device_pcs.state','=','active')
+            ->orderBy('devices.name')
             ->get();
         return $results;
     }

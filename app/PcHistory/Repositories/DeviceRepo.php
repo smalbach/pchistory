@@ -14,6 +14,7 @@ class DeviceRepo extends BaseRepo{
     public function findName($name){
 
         $users = Device::where('name', 'LIKE', "%$name%")
+            ->orderBy('name')
             ->get(
                 array('id',
                     'name as nombre',

@@ -35,6 +35,7 @@ class AccesoryPcRepo extends BaseRepo{
                         )
             ->where('pcs.id','=',$pc)
             ->where('accesory_pcs.state','=','active')
+            ->orderBy('accesories.name')
             ->get();
         return $results;
     }

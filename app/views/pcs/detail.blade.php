@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-lg-12">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
 
                 <div id="main-pc">
 
@@ -123,7 +123,7 @@
 
 
 
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h3 class="panel-title">Características</h3>
@@ -179,7 +179,7 @@
 
 
 
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">Programas instalados</h3>
@@ -236,7 +236,7 @@
 
         <div class="row">
 
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
                         <h3 class="panel-title">Dispositivos </h3>
@@ -976,6 +976,7 @@
             modal: true,
             width: 520,
             height: 260,
+            position: { my: "center", at: "center top" },
             show: {
                 effect: "blind",
                 duration: 300
@@ -992,6 +993,7 @@
             modal: true,
             width: 520,
             height: 260,
+            position: { my: "center", at: "center top" },
             show: {
                 effect: "blind",
                 duration: 300
@@ -1009,6 +1011,7 @@
             modal: true,
             width: 520,
             height: 260,
+            position: { my: "center", at: "center top" },
             show: {
                 effect: "blind",
                 duration: 300
@@ -1095,7 +1098,7 @@
             autoOpen:false,
             modal: true,
             width: 600,
-
+            position: { my: "center", at: "center top" },
             height: 400,
             buttons: {
 
