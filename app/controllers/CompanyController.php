@@ -62,9 +62,11 @@ class CompanyController extends BaseController{
        $usr=Auth::user()->id;
 
         $idcompany= $this->comRepo->search_company($usr);
-        $company=Session::get('company');
-        $id=$idcompany[0]['company_id'];
 
+        $company=$this->companyRepo->find( $idcompany[0]['company_id']);
+        Session::put('company', $company);
+        //echo $idcompany[0]['company_id']."aaa";
+       // dd($company);
 
         return View::make('companies/user_dashboard', compact('company') );
 

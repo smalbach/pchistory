@@ -46,6 +46,17 @@ class PcController extends  BaseController{
         return View::make('pcs/list', compact('pcs','company'));
     }
 
+    public function pc_list_maintenences(){
+
+        $pcs = $this->pcRepo->search_all($this->company);
+        $company=$this->company;
+
+
+        return View::make('pcs/maintenances_day', compact('pcs','company'));
+    }
+
+
+
     public function add(){
         $company=$this->company;
 

@@ -11,7 +11,7 @@
 </style>
 
 
-<h3>Lista de Equipos</h3>
+<h3>Fechas de mantenimiento de equipos</h3>
 
 <h4>Total: <span><strong>{{ $pcs->getTotal() }}</span></strong> </h4>
 <table  class="table  table-striped upper-table" >
@@ -22,7 +22,7 @@
         <th>Responsable</th>
         <th>Codigo interno</th>
         <th>Fecha mantenimiento</th>
-        <th colspan="3"></th>
+
     </tr>
 
 
@@ -35,20 +35,7 @@
         <td>{{  $pc->owner  }}</td>
         <td>{{  $pc->internal_id  }}</td>
         <td>{{  $pc->maintenance_day  }}</td>
-        <td>
 
-
-            <a  class="btn btn-success btn-xs" href="{{  route('pc_detail', array('id' => $pc->id)) }}" >
-                Administrar
-            </a>
-
-
-        </td>
-        <td>
-            <a  class="btn btn-warning btn-xs" href="{{  route('new_order', array('id' => $pc->id)) }}" >
-                Orden de Mantenimeinto
-            </a>
-        </td>
 
 
     </tr>

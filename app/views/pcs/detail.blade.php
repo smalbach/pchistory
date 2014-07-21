@@ -24,12 +24,18 @@
                                     </a>
                                 </div>
                                 <div class="col-xs-6">
-                                    {{Form::open(['route'=>'pc_edit','method'=>'post'])}}
-                                        {{ Field::hidden('id',$pc->id,['class'=>'none'])}}
-                                        <button class="btn btn-info btn-xs" id="editar">
-                                            Editar
-                                        </button>
-                                     {{ Form::close()}}
+
+                                    @if(Auth::user()->type=='company')
+
+                                        {{Form::open(['route'=>'pc_edit','method'=>'post'])}}
+                                            {{ Field::hidden('id',$pc->id,['class'=>'none'])}}
+                                            <button class="btn btn-info btn-xs" id="editar">
+                                                Editar
+                                            </button>
+                                         {{ Form::close()}}
+
+                                    @endif
+
                                 </div>
 
                                 <table class="table table-bordered ">
@@ -85,7 +91,14 @@
                                         <td>state</td>
                                     </tr>
                                     <tr>
-                                        <td>{{ $pc->password }}</td>
+                                        <td>
+                                            @if(Auth::user()->type=='company')
+                                                {{ $pc->password }}
+                                            @else
+                                                No tiene permisos para ver
+                                            @endif
+
+                                        </td>
                                         <td>{{ $pc->observation }}</td>
                                         <td>{{ $pc->state }}</td>
 
@@ -130,7 +143,9 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <button id="ad_accesory" type="button" class="btn btn-info  btn-sm"><i class="glyphicon glyphicon-plus">Añadir</i></button>
+                            @if(Auth::user()->type=='company')
+                                <button id="ad_accesory" type="button" class="btn btn-info  btn-sm"><i class="glyphicon glyphicon-plus">Añadir</i></button>
+                            @endif
                         </div>
                         <div class="row">
                             <div id="caracteristicas">
@@ -186,7 +201,9 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <button id="ad_software" type="button" class="btn btn-info  btn-sm"><i class="glyphicon glyphicon-plus">Añadir</i></button>
+                            @if(Auth::user()->type=='company')
+                                <button id="ad_software" type="button" class="btn btn-info  btn-sm"><i class="glyphicon glyphicon-plus">Añadir</i></button>
+                            @endif
                         </div>
                         <div class="row">
                             <div id="softwares_data">
@@ -243,7 +260,10 @@
                     </div>
                     <div class="panel-body">
                         <div class="row">
-                            <button id="ad_device" type="button" class="btn btn-info  btn-sm"><i class="glyphicon glyphicon-plus">Añadir</i></button>
+                            @if(Auth::user()->type=='company')
+                                <button id="ad_device" type="button" class="btn btn-info  btn-sm"><i class="glyphicon glyphicon-plus">Añadir</i></button>
+                            @endif
+
                         </div>
                         <div class="row">
                             <div id="devices_data">

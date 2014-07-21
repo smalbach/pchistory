@@ -18,7 +18,7 @@ Route::post('company/pc/add',  ['as'=>'pc_save', 'uses'=>'PcController@pc_save' 
 Route::get('company/pc/hist',  ['as'=>'pc_hist', 'uses'=>'PcController@pc_list' ]);
 Route::get('company/pc/detail/',  ['as'=>'pc_detail', 'uses'=>'PcController@pc_detail' ]);
 Route::post('company/pc/update',  ['as'=>'pc_update', 'uses'=>'PcController@pc_update' ]);
-
+Route::get('company/pc/list_maintenances',  ['as'=>'pc_maintenances', 'uses'=>'PcController@pc_list_maintenences' ]);
 
 
 

@@ -30,7 +30,7 @@ class PcRepo extends BaseRepo {
         $pc = DB::table('pcs')
                   ->where('company_id','=',$company->id)
                   ->orderBy('name')
-                  ->paginate(20);
+                  ->paginate(30);
         return $pc;
     }
 
