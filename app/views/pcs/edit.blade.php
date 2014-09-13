@@ -7,7 +7,7 @@
 
 <div class="row">
 
-    {{  Form::open(['route'=>'pc_update','method'=>'POST','role'=>'form','class'=>'form-horizontal','id'=>'form_pc'   ]) }}
+    {{  Form::open(['route'=>'pc_update','method'=>'POST','role'=>'form','class'=>'form-horizontal','files' => true,'id'=>'form_pc'   ]) }}
     <fieldset>
         <legend>Añadir Equipo</legend>
 
@@ -100,7 +100,18 @@
 
             {{ Field::textarea('observation',$pc->observation,['class'=>'form-control']) }}
 
-            {{ Field::text('photo',$pc->photo,['class'=>'form-control']) }}
+            {{ Field::text('ip',$pc->ip,['class'=>'form-control']) }}
+
+            {{ Field::hidden('photo',$pc->photo,['id'=>'photoname']) }}
+
+
+            <div class="form-group">
+                <div class="col-lg-2  control-label">
+                    <label for="photo">Foto</label>    </div>
+                <div class="col-lg-10">
+                    <input class="form-control" name="oldphoto" value="{{$pc->photo}}" type="file">    </div>
+            </div>
+
 
             {{ Field::text('state',$pc->state,['class'=>'form-control']) }}
 

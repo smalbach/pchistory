@@ -7,7 +7,7 @@
 
 <div class="row">
 
-    {{  Form::open(['route'=>'pc_save','method'=>'POST','role'=>'form','class'=>'form-horizontal','id'=>'form_pc'   ]) }}
+    {{  Form::open(['route'=>'pc_save','method'=>'POST','role'=>'form','class'=>'form-horizontal','files' => true,'id'=>'form_pc'   ]) }}
     <fieldset>
         <legend>Añadir Equipo</legend>
 
@@ -51,6 +51,8 @@
 
         {{ Field::text('model','',['class'=>'form-control']) }}
 
+        {{ Field::text('calibration','',['class'=>'form-control']) }}
+
         <div class="form-group">
 
             <div class="col-lg-2">
@@ -86,7 +88,14 @@
 
         {{ Field::textarea('observation','',['class'=>'form-control']) }}
 
-        {{ Field::text('photo','',['class'=>'form-control']) }}
+        {{ Field::text('ip','',['class'=>'form-control']) }}
+
+        <div class="form-group">
+            <div class="col-lg-2  control-label">
+                <label for="photo">Foto</label>    </div>
+            <div class="col-lg-10">
+                <input class="form-control" name="photo" value="" type="file">    </div>
+        </div>
 
         {{ Field::text('state','active',['class'=>'form-control']) }}
 

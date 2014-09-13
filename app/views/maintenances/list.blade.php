@@ -36,17 +36,19 @@
         <th>Problemas</th>
         <th>Prioridad</th>
         <th>Observación</th>
-
+        <th></th>
 
         @if($state=="fix" || $state=="_" )
         <th colspan="1"></th>
         <th>Hallazgos</th>
         <th>Reporte Tecnico</th>
         <th>Recomendaciones</th>
+        <th></th>
         @else
         <th colspan="4"></th>
 
         @endif
+
 
     </tr>
 
@@ -65,7 +67,9 @@
         <td>{{  $order->owner  }}</td>
         <td>{{  $order->technical  }}</td>
         <td>{{  $order->issues  }}</td>
-        <td>
+
+
+    <td>
 
 
             @if ($order->priority== 'high')
@@ -83,7 +87,15 @@
 
         </td>
         <td>{{  $order->observation  }}</td>
+        <td>
+            {{Form::open(['route'=>'orden_pc','target'=>'_blank', 'method'=>'get'])}}
+            {{ Field::hidden('id',$order->m_id,['class'=>'none'])}}
+            <button class="btn btn-danger btn-xs" id="formato">
+                Orden Pdf
+            </button>
+            {{ Form::close()}}
 
+        </td>
 
         <td>
             @if(Auth::user()->type=='technical')
@@ -116,6 +128,15 @@
             <td> {{  $order->find  }}</td>
             <td> {{  $order->tecnical_report  }}</td>
             <td> {{  $order->recommendations  }}</td>
+            <td>
+                {{Form::open(['route'=>'reporte_pc','target'=>'_blank','method'=>'get'])}}
+                {{ Field::hidden('id',$order->r_id,['class'=>'none'])}}
+                <button class="btn btn-success btn-xs" id="formato">
+                    Reporte Pdf
+                </button>
+                {{ Form::close()}}
+
+            </td>
 
         @else
          <td colspan="3"></td>

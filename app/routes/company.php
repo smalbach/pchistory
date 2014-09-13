@@ -20,6 +20,9 @@ Route::get('company/pc/detail/',  ['as'=>'pc_detail', 'uses'=>'PcController@pc_d
 Route::post('company/pc/update',  ['as'=>'pc_update', 'uses'=>'PcController@pc_update' ]);
 Route::get('company/pc/list_maintenances',  ['as'=>'pc_maintenances', 'uses'=>'PcController@pc_list_maintenences' ]);
 
+Route::get('company/pc/formato_pc',  ['as'=>'formato_pc', 'uses'=>'PcController@formato_pc' ]);
+Route::get('company/pc/formato_pc2',  ['as'=>'formato_pc2', 'uses'=>'PcController@formato_pc2' ]);
+
 
 
 //trademark routes
@@ -49,6 +52,10 @@ Route::post('company/accesory/pc/show_all/',  ['as'=>'show_pc_history', 'uses'=>
 Route::get('company/maintenances/new/',   ['as'=>'new_order', 'uses'=>'MaintenanceController@new_order' ]);
 Route::post('company/maintenances/new/',  ['as'=>'new_order', 'uses'=>'MaintenanceController@save_order' ]);
 Route::get('company/maintenances/list/',  ['as'=>'list_order', 'uses'=>'MaintenanceController@list_orders' ]);
+
+Route::get('company/maintenances/pdf/',  ['as'=>'orden_pc', 'uses'=>'MaintenanceController@pdf_order' ]);
+Route::get('company/maintenances/pdf_report/',  ['as'=>'reporte_pc', 'uses'=>'MaintenanceController@pdf_report' ]);
+
 
 
 Route::get('company',  ['as'=>'admin', 'uses'=>'CompanyController@index' ]);

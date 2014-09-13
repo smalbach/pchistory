@@ -72,6 +72,30 @@ class PcController extends  BaseController{
 
         if($manager->save()){
             $id=$manager->lastId();
+            //guardamos la imagen en public/imgs con el nombre original
+            $i = 0;//indice para el while
+            //separamos el nombre de la img y la extensión
+            $file = Input::file('photo');
+            $info = explode(".",$file->getClientOriginalName());
+            //asignamos de nuevo el nombre de la imagen completo
+            $miImg = $file->getClientOriginalName();
+            //mientras el archivo exista iteramos y aumentamos i
+            while(file_exists('eq/'. $miImg)){
+                $i++;
+                $miImg = $info[0]."-".$i."".".".$info[1];
+            }
+            //guardamos la imagen con otro nombre ej foto(1).jpg || foto(2).jpg etc
+            $file->move("eq",$miImg);
+            //si ha cambiado el nombre de la foto por el original actualizamos el campo foto de la bd
+
+            $pc= $this->pcRepo->find($id);
+            $pc->photo = $miImg;
+            $pc->save();
+            //redirigimos con un mensaje flash
+
+
+
+
            return Redirect::action('PcController@pc_detail', array('id' => $id) );
         }
 
@@ -109,8 +133,13 @@ class PcController extends  BaseController{
         $id=Input::get('id');
         $pc = $this->pcRepo->find($id);
 
-        $manager = new PcManager($pc, Input::all());
 
+        $file = Input::file('oldphoto');
+        $oldphoto=Input::get('photo');
+
+
+
+        $manager = new PcManager($pc, Input::all());
 
 
 
@@ -150,15 +179,90 @@ class PcController extends  BaseController{
          if($managerHis->save()){
              if($manager->save()){
                  $id=$manager->lastId();
+                 if($oldphoto==$file->getClientOriginalName()){
+                     $pc->photo = $oldphoto;
+                 }else{
+                     $i = 0;//indice para el while
+                     //separamos el nombre de la img y la extensión
+                     $extension=$file->guessClientExtension();
+                     $extension=strtolower($extension);
+
+                     if($extension=="jpg" || $extension=="gif" ||$extension=="png" ||$extension=="jpeg" ){
+
+                         if($file->getClientSize()>2029979){
+
+                             $messages =array('id' => $id,'size'=>'');
+                             return Redirect::action('pc_detail',$messages)->withErrors($messages);
+
+                         }else{
+                             $info = explode(".",$file->getClientOriginalName());
+                             //asignamos de nuevo el nombre de la imagen completo
+                             $miImg = $file->getClientOriginalName();
+                             //mientras el archivo exista iteramos y aumentamos i
+                             while(file_exists('eq/'. $miImg)){
+                                 $i++;
+                                 $miImg = $info[0]."-".$i."".".".$info[1];
+                             }
+                             //guardamos la imagen con otro nombre ej foto(1).jpg || foto(2).jpg etc
+                             $file->move("eq",$miImg);
+                             //si ha cambiado el nombre de la foto por el original actualizamos el campo foto de la bd
+                             $pc= $this->pcRepo->find($id);
+                             $pc->photo = $miImg;
+                             $pc->save();
+                         }
+
+                     }else{
+                         $messages =array('id' => $id,'ext'=>'');
+                         return Redirect::action('pc_detail',$messages)->withErrors($messages);
+                     }
+
+
+                 }
+
                  return Redirect::action('PcController@pc_detail', array('id' => $id) );
              }
          }
 
 
 
-        return Redirect::back()->withInput()->withErrors($manager->getErrors());
+        return Redirect::back()->withErrors($manager->getErrors())->withInput();
     }
 
+
+    function formato_pc(){
+        $id=Input::get('id');
+        $pc = $this->pcRepo->find($id);
+        $company=$this->company;
+
+
+        $accesories= $this->accesoryxpcRepo->searhAll($id);
+        $softwares= $this->softwarePcRepo->searhAll($id);
+        $devices= $this->devicePcRepo->searhAll($id);
+
+        $html =View::make('pcs/f_in_02', compact('pc','company','accesories','id','softwares','devices'))->render();
+
+        return PDF::load($html, 'A4', 'portrait')->show();
+
+    }
+
+
+    function formato_pc2(){
+        $id=Input::get('id');
+        $pc = $this->pcRepo->find($id);
+        $company=$this->company;
+
+
+        $accesories= $this->accesoryxpcRepo->searhAll($id);
+        $softwares= $this->softwarePcRepo->searhAll($id);
+        $devices= $this->devicePcRepo->searhAll($id);
+        //return Response::json($accesories);
+        $html =View::make('pcs/f_in_02', compact('pc','company','accesories','id','softwares','devices'))->render();
+        //$html=$view->render();
+        echo $html;
+        //echo "wwwweeerere";
+        //return PDF::load($html, 'A4', 'portrait')->show();
+        //return View::make('pcs/f_in_02', compact('pc','company','accesories','id','softwares','devices'));
+    }
 
 
 } 

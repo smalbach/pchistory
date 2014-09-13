@@ -56,7 +56,19 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                <label for="textArea" class="col-lg-3 control-label">Realizado por:</label>
+                <div class="col-lg-9">
+                    <input
+                        class="form-control"
+                        type="text"
+                        name="make"
+                        id="make"
+                        data-rule-required="true"
+                        >
 
+                </div>
+            </div>
 
             <div class="form-group">
                 <label for="select" class="col-lg-3 control-label">Estado del equipo</label>

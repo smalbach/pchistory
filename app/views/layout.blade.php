@@ -30,7 +30,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ route('home')}}">PC History</a>
+        <a class="navbar-brand" href="{{ route('home')}}">EQ History</a>
     </div>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
 

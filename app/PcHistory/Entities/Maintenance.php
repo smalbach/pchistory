@@ -16,6 +16,8 @@ class Maintenance extends \Eloquent {
         'priority',
         'observation',
         'pc_id',
+        'owner',
+        'user',
 
     );
 

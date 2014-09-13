@@ -17,6 +17,7 @@ class Report extends \Eloquent{
         'tecnical_report',
         'recommendations',
         'state',
+        'make',
 
 
     );

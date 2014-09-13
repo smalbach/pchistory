@@ -3,6 +3,8 @@
 
 @section('content')
 
+
+
 <div class="row">
     <div class="col-lg-12">
         <div class="row">
@@ -20,8 +22,9 @@
                             <div class="row">
                                 <div class="col-xs-6 col-md-3">
                                     <a href="#" class="thumbnail">
-                                        <img src="http://aikon.co/img/aikon.png" data-src="holder.js/100%x180"   class="img-thumbnail">
+                                        <img src="{{ asset('eq/')}}/{{$pc->photo}}" data-src="holder.js/100%x180"   class="img-thumbnail">
                                     </a>
+                                    <div id="errorimage" class="error"></div>
                                 </div>
                                 <div class="col-xs-6">
 
@@ -35,6 +38,15 @@
                                          {{ Form::close()}}
 
                                     @endif
+
+
+                                    {{Form::open(['route'=>'formato_pc','method'=>'get'])}}
+                                    {{ Field::hidden('id',$pc->id,['class'=>'none'])}}
+                                    <button class="btn btn-success btn-xs" id="formato">
+                                        Formato de calidad
+                                    </button>
+                                    {{ Form::close()}}
+
 
                                 </div>
 
@@ -83,6 +95,20 @@
                                         <td>{{ $pc->voltage }}</td>
                                         <td>{{ $pc->maintenance_day }}</td>
                                         <td>{{ $pc->buy_date }}</td>
+
+                                    </tr>
+                                    <tr class="warning">
+                                        <td>Ip</td>
+                                        <td colspan="2">Calibracion</td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                           {{ $pc->ip }}
+
+                                        </td>
+                                        <td colspan="2">{{ $pc->calibration }}</td>
+
 
                                     </tr>
                                     <tr class="warning">
@@ -837,6 +863,14 @@
 
 
     $(document).ready(function(){
+        url=document.URL;
+        var res = url.split("&");
+
+        if(res[1]=="size="){
+          $("#errorimage").html("Error: El tamaño de la imagen fue mur grande")
+        }else if(res[1]=="ext="){
+            $("#errorimage").html("Error: Debe seleccionar una imagen valida")
+        }
 
         setDialog('dialog_add_accesory')
         setDialog2('dialog_add_accesory_value')
@@ -1765,6 +1799,7 @@
 
 
     }
+
 
 
 

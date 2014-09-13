@@ -16,6 +16,8 @@ class MaintenanceManaguer  extends BaseManager{
             'support_id' 			=>'required',
             'issues'				=>'required',
             'pc_id'			=>'required',
+            'owner'			=>'',
+            'user'=>'',
             'priority'=>'',
             'observation'=>'',
 

@@ -12,11 +12,13 @@
         {{  Form::open(['route'=>'new_order','method'=>'POST','role'=>'form','id'=>'frm_support','class'=>'form-horizontal'  ]) }}
             {{ Field::text('support','',['readonly'=>'readonly','class'=>'form-control','id'=>'support_text','data-rule-required'=>'true']) }}
             {{ Field::hidden('support_id',"",['id'=>'support_id']) }}
-
+            <input type="hidden" name="owner" value="{{ $pc->owner }}"/>
+            <input type="hidden" name="owner" value="{{ $pc->location }}"/>
+            <input type="hidden" name="user" value="{{ Auth::user()->full_name}}"/>
 
 
         <div class="form-group">
-            <label for="textArea" class="col-lg-2 control-label">Descripcion del problea</label>
+            <label for="textArea" class="col-lg-2 control-label">Descripcion del problema</label>
             <div class="col-lg-10">
                 <textarea
                     class="form-control"
@@ -127,7 +129,10 @@
                             <td>Serial</td>
                         </tr>
                         <tr>
-                            <td>{{ $pc->owner }}</td>
+                            <td>
+
+                                {{ $pc->owner }}
+                            </td>
                             <td>{{ $pc->model }}</td>
                             <td>{{ $pc->serial }}</td>
 

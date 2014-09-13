@@ -65,7 +65,7 @@ return array(
 	|
 	*/
 
-	'fallback_locale' => 'es',
+	'fallback_locale' => 'en',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -123,6 +123,7 @@ return array(
 		//Vendor
         'Way\Generators\GeneratorsServiceProvider',
         'Barryvdh\Debugbar\ServiceProvider',
+        'Thujohn\Pdf\PdfServiceProvider',
 
         //custom
         'PcHistory\Components\FieldServiceProvider',
@@ -193,6 +194,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
         'View'            => 'Illuminate\Support\Facades\View',
 
+        'PDF' =>            'Thujohn\Pdf\PdfFacade',
 
         //custom
         'Field'           => 'PcHistory\Components\Field',

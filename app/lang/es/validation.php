@@ -119,9 +119,14 @@ return array(
         'accesory_name'=>'Nombre de dispositivo',
         'technical'=>'Empresa de soporte',
         'support_name'=>'Empresa de soporte',
-        'full_name'=>'Nombres'
-
+        'full_name'=>'Nombres',
+        'calibration'=>"Calibración",
+        'medium'=>'Media',
+        'low'=>'Baja'
 
 	),
+
+
+
 
 );

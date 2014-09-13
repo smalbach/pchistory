@@ -33,6 +33,8 @@ class MaintenenceRepo extends BaseRepo{
             ->join('suports', 'suports.id', '=', 'maintenances.support_id')
             ->leftJoin('reports', 'reports.maintenance_id', '=', 'maintenances.id')
             ->select(
+
+
                 'maintenances.id as m_id',
                 'pcs.name',
                 'pcs.location',
@@ -44,6 +46,7 @@ class MaintenenceRepo extends BaseRepo{
                 'maintenances.state',
                 'pcs.id as pc_id',
                 'reports.find',
+                'reports.id as r_id',
                 'reports.tecnical_report',
                 'reports.recommendations'
             )
@@ -75,6 +78,7 @@ class MaintenenceRepo extends BaseRepo{
                 'maintenances.state',
                 'pcs.id as pc_id',
                 'reports.find',
+                'reports.id as r_id',
                 'reports.tecnical_report',
                 'reports.recommendations'
             )

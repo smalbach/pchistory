@@ -51,6 +51,9 @@ Route::post('company/device/pc/add/',  ['as'=>'add_pc_device', 'uses'=>'DevicePc
 Route::get('company/device/pc/show_all/',  ['as'=>'show_pc_device', 'uses'=>'DevicePcController@searh_all' ]);
 Route::post('company/device/pc/delete/',  ['as'=>'delete_pc_device', 'uses'=>'DevicePcController@delete_ac' ]);
 
+
+
+
 //Route::get('company/software/search/',  ['as'=>'software_search', 'uses'=>'SoftwareController@search' ]);
 //img System route
 //Route::post('img/system/loader',    ['as'=>'accesory_save', 'uses'=>'AccesoryController@save' ]);//images

@@ -19,6 +19,7 @@ class ReportManager extends BaseManager{
             'tecnical_report'			=>'',
             'recommendations'=>'',
             'state'=>'',
+            'make'=>''
 
 
         ];

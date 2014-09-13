@@ -12,10 +12,10 @@ class HomeController extends BaseController {
 
 
 	public function index(){
-        Auth::logout();
-		//$latest_candidates = $this->candidateRepo->findLatest();
-        $hast = \Hash::make('123456');
-		return View::make('home', compact('hast'));
+	        Auth::logout();
+			//$latest_candidates = $this->candidateRepo->findLatest();
+	        $hast = \Hash::make('123456');
+			return View::make('home', compact('hast'));
 	}
 
 
