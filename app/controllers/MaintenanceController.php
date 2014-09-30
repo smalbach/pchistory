@@ -83,7 +83,7 @@ class MaintenanceController extends BaseController{
         $pcs = $this->pcRepo->find_order($id);
          $html= View::make('maintenances/f_in_03', compact('pcs'))->render();
         //echo $html;
-        return PDF::load($html, 'A4', 'portrait')->show();
+        return PDF::load(utf8_decode($html), 'A4', 'portrait')->show();
 
     }
 
@@ -93,7 +93,7 @@ class MaintenanceController extends BaseController{
         $pcs = $this->pcRepo->find_report($id);
         $html= View::make('maintenances/f_in_05', compact('pcs'))->render();
         //echo $html;
-        return PDF::load($html, 'A4', 'portrait')->show();
+        return PDF::load(utf8_decode($html), 'A4', 'portrait')->show();
     }
 
 } 

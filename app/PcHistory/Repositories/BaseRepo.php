@@ -1,5 +1,7 @@
 <?php namespace PcHistory\Repositories;
 
+
+
 abstract class BaseRepo {
 
     protected $model;

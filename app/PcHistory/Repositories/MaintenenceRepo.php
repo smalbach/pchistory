@@ -31,14 +31,17 @@ class MaintenenceRepo extends BaseRepo{
             ->join('pcs', 'pcs.id', '=', 'maintenances.pc_id')
             ->join('companies', 'companies.id', '=', 'pcs.company_id')
             ->join('suports', 'suports.id', '=', 'maintenances.support_id')
+            ->join('locations', 'locations.id', '=', 'pcs.location_id')
+            ->join('users', 'users.id', '=', 'pcs.owner_id')
+
             ->leftJoin('reports', 'reports.maintenance_id', '=', 'maintenances.id')
             ->select(
 
 
                 'maintenances.id as m_id',
                 'pcs.name',
-                'pcs.location',
-                'pcs.owner',
+                'locations.name as location',
+                'users.full_name as owner',
                 'suports.name as technical',
                 'maintenances.issues',
                 'maintenances.priority',
@@ -66,11 +69,14 @@ class MaintenenceRepo extends BaseRepo{
             ->join('pcs', 'pcs.id', '=', 'maintenances.pc_id')
             ->join('companies', 'companies.id', '=', 'pcs.company_id')
             ->join('suports', 'suports.id', '=', 'maintenances.support_id')
+            ->join('locations', 'locations.id', '=', 'pcs.location_id')
+            ->join('users', 'users.id', '=', 'pcs.owner_id')
+            ->join('users', 'users.id', '=', 'pcs.owner_id')
             ->leftJoin('reports', 'reports.maintenance_id', '=', 'maintenances.id')
             ->select('maintenances.id as m_id',
                 'pcs.name',
-                'pcs.location',
-                'pcs.owner',
+                'locations.name as location',
+                'users.full_name as owner',
                 'companies.name as company',
                 'maintenances.issues',
                 'maintenances.priority',

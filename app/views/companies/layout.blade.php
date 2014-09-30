@@ -45,7 +45,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{{ route('home')}}">EQ History</a>
+        <a class="navbar-brand" href="{{ route('home')}}">Inventory</a>
     </div>
     <div class="navbar-collapse collapse navbar-inverse-collapse">
         <ul class="nav navbar-nav">
@@ -55,23 +55,36 @@
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Equipos <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                    <li><a href="{{ route('pc_list') }}">Listado</a></li>
                     @if(Auth::user()->type=='company')
-                        <li><a href="{{ route('pc_add') }}">Nuevo</a></li>
+                    <li><a href="{{ route('pc_add') }}">Nuevo</a></li>
 
                     @endif
+
+                    <li><a href="{{ route('pc_list') }}">Listado</a></li>
+
                 </ul>
             </li>
             @if(Auth::user()->type=='company')
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Software <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+
+                        <li><a href="{{ route('software_add') }}">Nuevo</a></li>
+
+                        <li><a href="{{ route('software_list') }}">Listar</a></li>
+
+                    </ul>
+                </li>
+
                 <li><a href="{{ route('list_order') }}">Ordenes</a></li>
                 <li><a href="{{ route('user_list') }}">Usuarios</a></li>
+
+
+
+
+
             @endif
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reportes <b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                    <li><a href="{{ route('pc_maintenances') }}">Fechas de mantenimientos</a></li>
-                </ul>
-            </li>
         </ul>
 
 
@@ -205,6 +218,34 @@
 
                 break
 
+            case "type":
+                $("#type").val(data_sel_row)
+
+                $("#type_id").val(codigo_sel_row)
+
+                break
+
+            case "location":
+                $("#location").val(data_sel_row)
+
+                $("#location_id").val(codigo_sel_row)
+
+                break
+            case "owner":
+                $("#owner").val(data_sel_row)
+
+                $("#owner_id").val(codigo_sel_row)
+
+                break
+
+
+            case "active_type":
+                $("#active_type").val(data_sel_row)
+
+                $("#active_type_id").val(codigo_sel_row)
+
+                break
+
             case "searh_accesory":
                 $("#dialog_add_accesory_value").dialog("open")
                 $("#accesory_id").val(codigo_sel_row)
@@ -260,6 +301,40 @@
                     $( this ).dialog( "close" );
                 },
                 Cancelar: function() {
+                    $( this ).dialog( "close" );
+
+                }
+            },
+            show: {
+                effect: "blind",
+                duration: 300
+            },
+            hide: {
+                effect: "fade",
+                duration: 300
+            },
+            closeOnEscape: false,
+            open: function(event, ui) { $(".ui-dialog-titlebar-close").hide(); }
+        })
+
+    }
+
+
+
+    function setDialogNB(id){
+
+
+        $("#"+id).dialog({
+            autoOpen:false,
+            modal: true,
+            width: screenwidth,
+            maxWidth: 1000,
+            height: screenheight,
+            position: { my: "center", at: "center top" },
+            buttons: {
+
+
+                Cerrar: function() {
                     $( this ).dialog( "close" );
 
                 }

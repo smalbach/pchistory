@@ -12,7 +12,7 @@ class SoRepo  extends BaseRepo{
 
     public function findName($name){
 
-        $users = So::where('name', 'LIKE', "%$name%")->get(array('id', 'name as nombre','version','created_at'));
+        $users = So::where('name', 'LIKE', "%$name%")->get(array('id', 'name as nombre','version'));
         //$this->model->find($name);
         //dd($users);
         return $users;
@@ -24,5 +24,7 @@ class SoRepo  extends BaseRepo{
         return $so;
 
     }
+
+
 
 } 

@@ -1,4 +1,4 @@
-@extends('technical/layout')
+@extends('companies/layout')
 
 
 @section('content')
@@ -126,12 +126,12 @@
                         <table class="table table-bordered ">
                             <tr class="warning">
                                 <td>Marca</td>
-                                <td>S. O.</td>
+                                <td></td>
                                 <td>Nombre</td>
                             </tr>
                             <tr>
                                 <td>{{ $pc->trademark->name }}</td>
-                                <td>{{ $pc->so->name." ".$pc->so->version }}</td>
+                                <td></td>
                                 <td>{{ $pc->name }}</td>
 
                             </tr>
@@ -143,7 +143,7 @@
                             <tr>
                                 <td>{{ $pc->type }}</td>
                                 <td>{{ $pc->internal_id }}</td>
-                                <td>{{ $pc->location }}</td>
+                                <td>{{ $pc->location->name }}</td>
 
                             </tr>
 

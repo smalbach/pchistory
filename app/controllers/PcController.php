@@ -46,6 +46,18 @@ class PcController extends  BaseController{
         return View::make('pcs/list', compact('pcs','company'));
     }
 
+    public function pc_list_ajax(){
+        $filter = Input::get("filter");
+        $value = Input::get("value");
+        $pcs = $this->pcRepo->search_filter($filter,$value,$this->company);
+        $company=$this->company;
+
+
+        return View::make('pcs/list_ajax', compact('pcs'));
+    }
+
+
+
     public function pc_list_maintenences(){
 
         $pcs = $this->pcRepo->search_all($this->company);
@@ -99,7 +111,7 @@ class PcController extends  BaseController{
            return Redirect::action('PcController@pc_detail', array('id' => $id) );
         }
 
-        return Redirect::back()->withInput()->withErrors($manager->getErrors());
+        //return Redirect::back()->withInput()->withErrors($manager->getErrors());
     }
 
     public  function pc_detail(){
@@ -120,11 +132,11 @@ class PcController extends  BaseController{
 
     public  function pc_edit(){
         $id=Input::get('id');
-        $pc = $this->pcRepo->find($id);
+        $pcs = $this->pcRepo->find_edit($id);
         $company=$this->company;
 
 
-        return View::make('pcs/edit', compact('pc','company','id'));
+        return View::make('pcs/edit', compact('pcs','company','id'));
 
     }
 
@@ -141,31 +153,41 @@ class PcController extends  BaseController{
 
         $manager = new PcManager($pc, Input::all());
 
-
+        $company=$this->company->id;
 
         $datahis=array(
-            'trademark_id'      =>$pc->trademark_id,
-            'so_id'				=>$pc->so_id,
-            'name'			    =>$pc->name,
-            'company_id'	    =>$pc->company_id,
-            'user_id'	        =>Auth::user()->id,
-            'type'              =>$pc->type,
-            'internal_id'       =>$pc->internal_id,
-            'location'          =>$pc->location,
-            'owner'             =>$pc->owner,
-            'model'             =>$pc->model,
-            'serial'            =>$pc->serial,
-            'voltage'           =>$pc->voltage,
-            'maintenance_day'   =>$pc->maintenance_day,
-            'buy_date'          =>$pc->buy_date,
-            'password'          =>$pc->password,
-            'observation'       =>$pc->observation,
-            'photo'             =>$pc->photo,
-            'state'             =>$pc->state,
-            'order'             =>$pc->order,
-            'type_pc'           =>$pc->type_pc,
-            'motive'            =>Input::get('motive'),
-            'pc_id'             =>$pc->id,
+            'pc_id' =>$pc->id,
+            'company_id' =>$company,
+            'trademark_id' =>$pc->trademark_id,
+            'so_id' =>$pc->so_id,
+            'type_id' =>$pc->type_id,
+            'location_id' =>$pc->location_id,
+            'owner_id' =>$pc->owner_id,
+            'active_type_id' =>$pc->active_type_id,
+            'name' =>$pc->name,
+            'internal_id' =>$pc->internal_id,
+            'model' =>$pc->model,
+            'serial' =>$pc->serial,
+            'voltage' =>$pc->voltage,
+            'maintenance_day' =>$pc->maintenance_day,
+            'maintenance_freq' =>$pc->maintenance_freq,
+            'buy_date' =>$pc->buy_date,
+            'password' =>$pc->password,
+            'observation' =>$pc->observation,
+            'calibration' =>$pc->calibration,
+            'ip' =>$pc->ip,
+            'waranty' =>$pc->waranty,
+            'vendor' =>$pc->vendor,
+            'photo' =>$pc->photo,
+            'state' =>$pc->state,
+            'order' =>$pc->order,
+            'cost' =>$pc->cost,
+            'waranty_end' =>$pc->waranty_end,
+            'access_number' =>$pc->access_number,
+            'amount' =>$pc->amount,
+            'motive' =>Input::get('motive'),
+            'created_at' =>$pc->created_at,
+            'updated_at' =>$pc->updated_at,
             'user_id'           =>Auth::user()->id,
 
         );
@@ -177,7 +199,10 @@ class PcController extends  BaseController{
         $managerHis = new PcHistoryManager($pcHis, $datahis);
 
          if($managerHis->save()){
+
+
              if($manager->save()){
+
                  $id=$manager->lastId();
                  if($oldphoto==$file->getClientOriginalName()){
                      $pc->photo = $oldphoto;
@@ -221,6 +246,7 @@ class PcController extends  BaseController{
 
                  return Redirect::action('PcController@pc_detail', array('id' => $id) );
              }
+
          }
 
 
@@ -241,7 +267,7 @@ class PcController extends  BaseController{
 
         $html =View::make('pcs/f_in_02', compact('pc','company','accesories','id','softwares','devices'))->render();
 
-        return PDF::load($html, 'A4', 'portrait')->show();
+        return PDF::load(utf8_decode($html), 'A4', 'portrait')->show();
 
     }
 

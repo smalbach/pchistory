@@ -40,6 +40,13 @@ class UserRepo extends BaseRepo{
         return $pc;
     }
 
+    public function findName($name){
+
+        $users = User::where('full_name', 'LIKE', "%$name%")->get(array('id', 'full_name as nombre','email as E-mail'));
+        //$this->model->find($name);
+        //dd($users);
+        return $users;
+    }
 
 
 

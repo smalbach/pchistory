@@ -4,7 +4,21 @@
 
 require (__DIR__ . '/routes/company.php');
 
+require (__DIR__ . '/routes/software.php');
 
+require (__DIR__ . '/routes/pc.php');
+
+require (__DIR__ . '/routes/type.php');
+
+require (__DIR__ . '/routes/location.php');
+
+require (__DIR__ . '/routes/users.php');
+
+require (__DIR__ . '/routes/active_type.php');
+
+require (__DIR__ . '/routes/schedule.php');
+
+require (__DIR__ . '/routes/security_copy.php');
 
 //Home
 Route::get('/',  ['as'=>'home', 'uses'=>'HomeController@index' ]);
@@ -16,7 +30,7 @@ Route::get('logout',  ['as'=>'signout', 'uses'=>'AuthController@logout' ]);
 
 //suppor routes
 Route::get('technical/',  ['as'=>'technical', 'uses'=>'SuportController@technical' ]);
-Route::get('technical/list',  ['as'=>'technical_list', 'uses'=>'SuportController@technical' ]);
+Route::get('technical/list',  ['as'=>'technical_list', 'uses'=>'MaintenanceController@list_orders' ]);
 Route::post('technical/maintenances/do/',    ['as'=>'do_order', 'uses'=>'MaintenanceController@do_orders' ]);
 //Report route
 Route::post('technical/report/save',    ['as'=>'save_order_do', 'uses'=>'ReportController@save_report' ]);
@@ -35,11 +49,11 @@ Route::post('accesory/save',    ['as'=>'accesory_save', 'uses'=>'AccesoryControl
 
 //Software
 
-Route::post('software/save',    ['as'=>'software_save', 'uses'=>'SoftwareController@save' ]);
-Route::post('company/software/search/',  ['as'=>'software_search', 'uses'=>'SoftwareController@search' ]);
-Route::post('company/software/pc/add/',  ['as'=>'add_pc_software', 'uses'=>'SoftwarePcController@add_pc' ]);
-Route::get('company/software/pc/show_all/',  ['as'=>'show_pc_software', 'uses'=>'SoftwarePcController@searh_all' ]);
-Route::post('company/software/pc/delete/',  ['as'=>'delete_pc_software', 'uses'=>'SoftwarePcController@delete_ac' ]);
+Route::post('software.php/save',    ['as'=>'software_save', 'uses'=>'SoftwareController@save' ]);
+Route::post('company/software.php/search/',  ['as'=>'software_search', 'uses'=>'SoftwareController@search' ]);
+Route::post('company/software.php/pc/add/',  ['as'=>'add_pc_software', 'uses'=>'SoftwarePcController@add_pc' ]);
+Route::get('company/software.php/pc/show_all/',  ['as'=>'show_pc_software', 'uses'=>'SoftwarePcController@searh_all' ]);
+Route::post('company/software.php/pc/delete/',  ['as'=>'delete_pc_software', 'uses'=>'SoftwarePcController@delete_ac' ]);
 
 
 
@@ -54,7 +68,7 @@ Route::post('company/device/pc/delete/',  ['as'=>'delete_pc_device', 'uses'=>'De
 
 
 
-//Route::get('company/software/search/',  ['as'=>'software_search', 'uses'=>'SoftwareController@search' ]);
+//Route::get('company/software.php/search/',  ['as'=>'software_search', 'uses'=>'SoftwareController@search' ]);
 //img System route
 //Route::post('img/system/loader',    ['as'=>'accesory_save', 'uses'=>'AccesoryController@save' ]);//images
 

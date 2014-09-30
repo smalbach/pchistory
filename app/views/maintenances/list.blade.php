@@ -98,7 +98,9 @@
         </td>
 
         <td>
-            @if(Auth::user()->type=='technical')
+
+
+            @if(Auth::user()->type=='company')
 
             {{  Form::open(['route'=>'do_order','method'=>'post','role'=>'form','id'=>'frm_accesory_delete'   ]) }}
 
@@ -107,13 +109,13 @@
 
 
                 <div class="form-group">
-                    <div class="col-lg-12 col-lg-offset-2">
+
 
                         @if ($order->state != 'fix')
-                            <button type="submit" class="btn btn-primary btn-sm">Realizar</button>
+                            <button type="submit" class="btn btn-primary btn-xs">Realizar</button>
 
                         @endif
-                    </div>
+
                 </div>
 
 

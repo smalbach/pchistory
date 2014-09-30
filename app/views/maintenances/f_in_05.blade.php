@@ -13,7 +13,7 @@
     </tr>
     <tr>
 
-        <td><center>CLÍNICA OFTALMOLOGICA DE SINCELEJO LTDA</center></td>
+        <td><center>SECRETARIA DE EDUCACIÓN DE SUCRE</center></td>
         <td><center>Versión:</center></td>
         <td><center>3</center></td>
 

@@ -104,6 +104,14 @@ class UserController extends BaseController {
 
     }
 
+    public  function search(){
+
+        $name=Input::get("owner_name");
+        $location= $this->userRepo->findName($name);
+        // var_dump($trademarks);
+        return Response::json($location);
+
+    }
 
 
 

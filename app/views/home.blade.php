@@ -6,10 +6,10 @@
 @section('content')
 
 <p class="description bg-grayLighter padding200">
-    <h1>Eq History</h1>
+    <h1>Inventory</h1>
     <h2>Hoja de vida de equipos</h2>
 </p>
-
+ <!--Hash::make("123456")-->
 <div class="well bs-component col-xs-6">
 
 @if(Auth::check())

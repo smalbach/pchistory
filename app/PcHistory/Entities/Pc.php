@@ -11,23 +11,36 @@ namespace PcHistory\Entities;
 
 class Pc extends \Eloquent  {
     protected $fillable = array(
+
+        'company_id',
         'trademark_id',
-        'name',
         'so_id',
-        'type',
+        'type_id',
+        'location_id',
+        'owner_id',
+        'active_type_id',
+        'name',
         'internal_id',
-        'location',
-        'owner',
         'model',
         'serial',
         'voltage',
         'maintenance_day',
+        'maintenance_freq',
         'buy_date',
         'password',
         'observation',
+        'calibration',
+        'ip',
+        'waranty',
+        'vendor',
         'photo',
         'state',
         'order',
+        'cost',
+        'waranty_end',
+        'access_number',
+        'amount',
+
         'type_pc',
 
     );
@@ -36,12 +49,18 @@ class Pc extends \Eloquent  {
         return $this->belongsTo('PcHistory\Entities\Trademark');
     }
 
-    public  function so(){
-        return $this->belongsTo('PcHistory\Entities\So');
-    }
 
     public function accesoriesxpc(){
         return $this->hasMany('PcHistory\Entities\Accesory_Pc');
+    }
+
+    public  function location(){
+        return $this->belongsTo('PcHistory\Entities\Location');
+    }
+
+
+    public  function user(){
+        return $this->belongsTo('PcHistory\Entities\User');
     }
 
 

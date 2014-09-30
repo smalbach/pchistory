@@ -15,10 +15,28 @@ class SoftwareManger extends BaseManager{
     public function  getRules(){
         $rules=[
 
-            'name'			=>'required',
-            'description'=>'',
-            'version'=>'',
-            'state'=>'',
+
+            'name' =>'required',
+            'state' =>'',
+            'type' =>'required',
+            'quantity' =>'',
+            'quantity_licenses' =>'',
+            'description' =>'',
+            'developed' =>'',
+            'support' =>'',
+            'licences_number_server' =>'',
+            'licences_number_client' =>'',
+            'plataform' =>'',
+            'language' =>'',
+            'database' =>'',
+            'last_vendor' =>'',
+            'license_value' =>'',
+            'maintenance_cost' =>'',
+            'owner_soft' =>'',
+            'owner_code' =>'',
+            'restrictions' =>'',
+            'support_state' =>'',
+            'version' =>'',
 
         ];
         return $rules;

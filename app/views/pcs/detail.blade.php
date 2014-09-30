@@ -14,7 +14,7 @@
 
                     <div class="panel panel-success">
                         <div class="panel-heading">
-                            <h3 class="panel-title">PC: {{$pc->name}} </h3>
+                            <h3 class="panel-title">Equipo: {{$pc->name}} </h3>
 
                         </div>
                         <div class="panel-body">
@@ -58,7 +58,7 @@
                                     </tr>
                                     <tr>
                                         <td>{{ $pc->trademark->name }}</td>
-                                        <td>{{ $pc->so->name." ".$pc->so->version }}</td>
+                                        <td></td>
                                         <td>{{ $pc->name }}</td>
 
                                     </tr>
@@ -70,7 +70,7 @@
                                     <tr>
                                         <td>{{ $pc->type }}</td>
                                         <td>{{ $pc->internal_id }}</td>
-                                        <td>{{ $pc->location }}</td>
+                                        <td>{{ $pc->location->name }}</td>
 
                                     </tr>
 
@@ -88,12 +88,12 @@
 
                                     <tr class="warning">
                                         <td>Voltaje</td>
-                                        <td>Fecha de mantenimiento</td>
+                                        <td>Freq. de mantenimiento</td>
                                         <td>Fecha Compra</td>
                                     </tr>
                                     <tr>
                                         <td>{{ $pc->voltage }}</td>
-                                        <td>{{ $pc->maintenance_day }}</td>
+                                        <td>{{ $pc->maintenance_freq }}</td>
                                         <td>{{ $pc->buy_date }}</td>
 
                                     </tr>
@@ -186,6 +186,8 @@
                                         <th>Cantidad</th>
                                         <th>Unidad</th>
                                         <th>Descripción</th>
+
+
                                         <th></th>
 
                                     </tr>
@@ -220,74 +222,24 @@
 
 
 
-            <div class="col-lg-12">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Programas instalados</h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="row">
-                            @if(Auth::user()->type=='company')
-                                <button id="ad_software" type="button" class="btn btn-info  btn-sm"><i class="glyphicon glyphicon-plus">Añadir</i></button>
-                            @endif
-                        </div>
-                        <div class="row">
-                            <div id="softwares_data">
-
-
-
-                                <table class="table table-striped table-responsive" id="data_software">
-                                    <tr class="warning">
-                                        <th>Id</th>
-                                        <th>Dispositivo</th>
-                                        <th>Versión</th>
-
-                                        <th>Descripción</th>
-                                        <th></th>
-
-                                    </tr>
-                                    @foreach($softwares as $software)
-                                    <tr>
-                                        <td>{{$software->ap_id}}</td>
-                                        <td>{{$software->name}}</td>
-                                        <td>{{$software->version}}</td>
-
-                                        <td>{{$software->description}}</td>
-                                        <td>
-                                            <button class="btn btn-xs btn-danger" onclick="del_software('{{$software->ap_id}}')"><i class="glyphicon glyphicon-trash"></i></button>
-
-                                        </td>
-
-                                    </tr>
-
-
-
-                                    @endforeach
-                                </table>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-                </div>
-            </div>
 
 
 
         </div>
 
-        <div class="row">
+
+
+        <div class="row hidden">
 
             <div class="col-lg-12">
                 <div class="panel panel-warning">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Dispositivos </h3>
+                        <h3 class="panel-title">Hardware Relacionado </h3>
                     </div>
                     <div class="panel-body">
                         <div class="row">
                             @if(Auth::user()->type=='company')
-                                <button id="ad_device" type="button" class="btn btn-info  btn-sm"><i class="glyphicon glyphicon-plus">Añadir</i></button>
+                            <button id="ad_device" type="button" class="btn btn-info  btn-sm"><i class="glyphicon glyphicon-plus">Añadir</i></button>
                             @endif
 
                         </div>
@@ -337,6 +289,65 @@
 
 
         </div>
+
+
+        <div class="row">
+
+            <div class="col-lg-12">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Programas instalados (Solo CPU y similares)</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            @if(Auth::user()->type=='company')
+                            <button id="ad_software" type="button" class="btn btn-info  btn-sm"><i class="glyphicon glyphicon-plus">Añadir</i></button>
+                            @endif
+                        </div>
+                        <div class="row">
+                            <div id="softwares_data">
+
+
+
+                                <table class="table table-striped table-responsive" id="data_software">
+                                    <tr class="warning">
+                                        <th>Id</th>
+                                        <th>Dispositivo</th>
+                                        <th>Versión</th>
+
+                                        <th>Descripción</th>
+                                        <th></th>
+
+                                    </tr>
+                                    @foreach($softwares as $software)
+                                    <tr>
+                                        <td>{{$software->ap_id}}</td>
+                                        <td>{{$software->name}}</td>
+                                        <td>{{$software->version}}</td>
+
+                                        <td>{{$software->description}}</td>
+                                        <td>
+                                            <button class="btn btn-xs btn-danger" onclick="del_software('{{$software->ap_id}}')"><i class="glyphicon glyphicon-trash"></i></button>
+
+                                        </td>
+
+                                    </tr>
+
+
+
+                                    @endforeach
+                                </table>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
 
         <div class="row">
             <div class="col-lg-12">
@@ -520,7 +531,7 @@
                     </div>
                     <div class="col-lg-2">
                         <button  id="searh_software" type="button"  class="btn btn-success btn-sm"  ><i class="glyphicon glyphicon-search"></i></button>
-                        <button type="button"  class="btn btn-info btn-sm" id="btn_new_software" ><i class="glyphicon glyphicon-plus"></i></button>
+                       <!-- <button type="button"  class="btn btn-info btn-sm" id="btn_new_software" ><i class="glyphicon glyphicon-plus"></i></button>-->
                     </div>
 
 

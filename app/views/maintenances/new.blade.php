@@ -10,8 +10,8 @@
 
     <div class="col-lg-6">
         {{  Form::open(['route'=>'new_order','method'=>'POST','role'=>'form','id'=>'frm_support','class'=>'form-horizontal'  ]) }}
-            {{ Field::text('support','',['readonly'=>'readonly','class'=>'form-control','id'=>'support_text','data-rule-required'=>'true']) }}
-            {{ Field::hidden('support_id',"",['id'=>'support_id']) }}
+            {{ Field::text('support','1',['readonly'=>'readonly','class'=>'form-control','id'=>'support_text','data-rule-required'=>'true']) }}
+            {{ Field::hidden('support_id',"1",['id'=>'support_id']) }}
             <input type="hidden" name="owner" value="{{ $pc->owner }}"/>
             <input type="hidden" name="owner" value="{{ $pc->location }}"/>
             <input type="hidden" name="user" value="{{ Auth::user()->full_name}}"/>
@@ -102,12 +102,12 @@
                     <table class="table table-bordered ">
                         <tr class="warning">
                             <td>Marca</td>
-                            <td>S. O.</td>
+                            <td></td>
                             <td>Nombre</td>
                         </tr>
                         <tr>
                             <td>{{ $pc->trademark->name }}</td>
-                            <td>{{ $pc->so->name." ".$pc->so->version }}</td>
+                            <td></td>
                             <td>{{ $pc->name }}</td>
 
                         </tr>
@@ -119,7 +119,7 @@
                         <tr>
                             <td>{{ $pc->type }}</td>
                             <td>{{ $pc->internal_id }}</td>
-                            <td>{{ $pc->location }}</td>
+                            <td>{{ $pc->location->name }}</td>
 
                         </tr>
 
@@ -260,8 +260,8 @@ $(document).ready(function(){
 
 
     $("#support_text").on('click', function(){
-        table_active="support"
-        $("#dialog_support").dialog('open');
+        //table_active="support"
+        //$("#dialog_support").dialog('open');
 
     });
 
